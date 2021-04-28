@@ -5,7 +5,7 @@ public class TryEverything {
 		char q = 'D';
 		System.out.println("q =" + q);
 		
-		char b = '¾ß';
+		char b = 'Â¾ÃŸ';
 		System.out.println(b);
 		
 		int c = 55;
