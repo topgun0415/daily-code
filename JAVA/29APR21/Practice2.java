@@ -4,11 +4,11 @@ public class Practice2 {
 	public static void main(String[] args) {
 		
 		
-		// 30APR21 ¿¬»êÀÚ¿¡ ´ëÇÑ ¿¬½À
+		// 30APR21 ì—°ì‚°ìžì— ëŒ€í•œ ì—°ìŠµ
 		/*
-		 *  =´Â ¼öÇÐ¿¡¼­´Â ¿À¸¥ÂÊ°ú ¿ÞÂÊÀÌ °ªÀÌ °°´Ù¶ó´Â ¶æÀÌÁö¸¸
-		 *  ÇÁ·Î±×·¥¿¡¼­´Â ´Ù¸£´Ù. ¿À¸¥ÂÊ°ªÀ» ¿ÞÂÊ¿¡ ´ëÀÔÇÑ´Ù´Â ÀÇ¹ÌÀÌ´Ù.
-		 *   ¼öÇÐ¿¡¼­ÀÇ =´Â ÇÁ·Î±×·¥¿¡¼­ == ÀÌ´Ù. 
+		 *  =ëŠ” ìˆ˜í•™ì—ì„œëŠ” ì˜¤ë¥¸ìª½ê³¼ ì™¼ìª½ì´ ê°’ì´ ê°™ë‹¤ë¼ëŠ” ëœ»ì´ì§€ë§Œ
+		 *  í”„ë¡œê·¸ëž¨ì—ì„œëŠ” ë‹¤ë¥´ë‹¤. ì˜¤ë¥¸ìª½ê°’ì„ ì™¼ìª½ì— ëŒ€ìž…í•œë‹¤ëŠ” ì˜ë¯¸ì´ë‹¤.
+		 *   ìˆ˜í•™ì—ì„œì˜ =ëŠ” í”„ë¡œê·¸ëž¨ì—ì„œ == ì´ë‹¤. 
 		 */
 		
 		int x = 10;
@@ -24,7 +24,7 @@ public class Practice2 {
 		System.out.println("\nx % y = "+ ( x % y));
 		
 		
-		//º¹ÇÕ ´ëÀÔ¿¬»êÀÚ
+		//ë³µí•© ëŒ€ìž…ì—°ì‚°ìž
 		
 	
 				
@@ -35,27 +35,27 @@ public class Practice2 {
 		System.out.println(" x /= 10 :  " + (x /= 10));
 	   
 		
-		//°ü°è¿¬»êÀÚ
+		//ê´€ê³„ì—°ì‚°ìž
 		 
 		System.out.println(" x =! y : " + ( x !=  y ));
 	  
-		// Áõ°¨¿¬»êÀÚ
+		// ì¦ê°ì—°ì‚°ìž
 		/* 
-		 *  ++ 1¸¸Å­ Áõ°¡ 
-		 *  -- 1¸¸Å­ Áõ°¡
+		 *  ++ 1ë§Œí¼ ì¦ê°€ 
+		 *  -- 1ë§Œí¼ ì¦ê°€
 		 *   
-		 *   Âü°í·Î x = 10 
+		 *   ì°¸ê³ ë¡œ x = 10 
 		 *   ++x = 11
 		 *   --x = 9 
-		 *   ´Ù¸¸ ÀÌ°Ç ÀüÀÓ¿¬»êÀÚ¿¡ ÇÑÇØ¼­ÀÓ
+		 *   ë‹¤ë§Œ ì´ê±´ ì „ìž„ì—°ì‚°ìžì— í•œí•´ì„œìž„
 		 *  x-- = 10
 		 *  x++ = 10 
-		 *  ÀÌ´Â ÈÄÀÓ¿¬»êÀÚ¶ó´Â °ÍÀÎµ¥ ¸Þ¸ð¸®¿¡¼­ ¿¬»êµÇÁö ¾ÊÀº ¼ö¸¦ ¹Ì¸® ²¨³»³õÀº°Í
-		 *  ±×·¸±â¿¡ ±× µÚ¿¡ ³ª¿À´Â xÀÇ °ªÀº x++ = 11ÀÌ ³ª¿À°í x-- = 9°¡ ³ª¿Â´Ù. 
+		 *  ì´ëŠ” í›„ìž„ì—°ì‚°ìžë¼ëŠ” ê²ƒì¸ë° ë©”ëª¨ë¦¬ì—ì„œ ì—°ì‚°ë˜ì§€ ì•Šì€ ìˆ˜ë¥¼ ë¯¸ë¦¬ êº¼ë‚´ë†“ì€ê²ƒ
+		 *  ê·¸ë ‡ê¸°ì— ê·¸ ë’¤ì— ë‚˜ì˜¤ëŠ” xì˜ ê°’ì€ x++ = 11ì´ ë‚˜ì˜¤ê³  x-- = 9ê°€ ë‚˜ì˜¨ë‹¤. 
 		 */
 		
 		
-		//³í¸®¿¬»êÀÚ
+		//ë…¼ë¦¬ì—°ì‚°ìž
 		boolean b1 = false;
 		boolean b2 = true; 
 		
@@ -64,7 +64,7 @@ public class Practice2 {
 		System.out.println(" !b1 : " + (!b1));
 		
 		
-		//Á¶°Ç»ïÈ² ¿¬»êÀÚ
+		//ì¡°ê±´ì‚¼í™© ì—°ì‚°ìž
 	 
 		x = 10; y = 20;
 		int result  =  0;
