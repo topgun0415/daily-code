@@ -28,12 +28,8 @@ public class Main {
 		
 		System.out.println("Hello,java의 확장자를 제외한 이름은 " + index2);
 		System.out.println("파일 이름을 제외한 확장자의 이름은" + index3) ;
-		
-		
+	
 	}
 	
 }
-
-  
-
 
