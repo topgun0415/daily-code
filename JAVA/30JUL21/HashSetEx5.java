@@ -40,7 +40,7 @@ public class Main {
 		it = setA.iterator();
 		while(it.hasNext()) {
 			Object tmp = it.next();
-			if(!setA.contains(tmp)) {
+			if(!setB.contains(tmp)) {
 				setCha.add(tmp);
 			}
 		}
@@ -50,15 +50,15 @@ public class Main {
 			setHab.add(it.next());
 		}
 		
-		System.out.println(" A ∩ B = " + setKyo );
-		System.out.println(" A ∪ B = " + setHab);
-		System.out.println(" A - B = " +setCha);
+		it = setA.iterator();
+		while(it.hasNext()) {
+			setHab.add(it.next());
+		}
 		
+		System.out.println(" A ∩ B = " + setKyo );	// 교집합 
+		System.out.println(" A ∪ B = " + setHab);	// 합집합
+		System.out.println(" A - B = " +setCha);	// 차집합 
 		
 	}
 	
 }
-
-
-
-
