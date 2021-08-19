@@ -1,1 +1,0 @@
-var c = "Hello World";
