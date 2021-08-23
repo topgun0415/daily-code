@@ -1,6 +1,6 @@
 import java.util.*;
 
-public class Main {
+public class AsciiPrint {
 	public static void main (String [] args) {
 		
 		char ch = ' ' ;
