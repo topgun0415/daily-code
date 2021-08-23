@@ -11,4 +11,4 @@ console.log('Hello, comment') // Hello, comment 출력
 if(true) {
     console.log("Hello, world!");
 }
-// 들여쓰기는 보통 스페이스 2칸 스페이스 4칸으로 (탭 1번) 으로 공백을 둠
+// 들여쓰기는 보통 스페이스 2칸 스페이스 4칸으로 (탭 1번) 으로 공백을 둠.
