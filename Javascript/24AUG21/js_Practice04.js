@@ -17,5 +17,20 @@ let a = "apple";
 
 // 2.3.2 변수의 값 수정하기
 
+let change = "바꿔 봐"; 
+change = "바꿨다";
+console.log("change = " + change);
+
+let empty;
+empty = undefined;
+// 이렇게 변수에 넣는 값을 아예 비울 때도 있다. 방법은 undefined 와 null 을 대입하는 두 가지 방법이 있다. 하지만 많은 개발자들은 null을 사용하여 보다 의도적으로 지웠다는 의미를 부여하는 경우가 많다.
+empty = null;
+console.log(empty);
+
+
+
+
+
+
 
 
