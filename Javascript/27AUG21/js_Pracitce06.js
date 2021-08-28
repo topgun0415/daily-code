@@ -27,6 +27,20 @@ if(condition) {
 if (false) 
     console.log("Hello, java");
     console.log("Hello, jas");
+// 밑에 있는 Hello,jas만 출력됨 
+
+
+let value = "사과";
+let conditions = true;
+if (conditions) {
+    value = "바나나";
+}
+console.log(value);
+
+// 이처럼 조건문에 value 변수의 값을 바꾸는 것도 가능함
+
+
+
 
     
     
