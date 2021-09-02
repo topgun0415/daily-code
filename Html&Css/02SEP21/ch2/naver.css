@@ -1,0 +1,29 @@
+/* 선택자(Selector) */
+
+#header-center {    /* div tag는 생략이 가능한데 다른 header와 같은 태그들은 생략 불가능! */
+    margin: 0 auto; 
+    width: 900px;
+}
+
+#header-search > h1 {
+    width:  280px;
+    display: inline-block;
+
+}
+
+/*
+#header-cetner h1 {
+    자손선택자 
+}
+*/
+
+#header-search > h2 {
+    display: none;
+}
+
+#header-search > fieldset {
+    width: 520px;
+    display: inline-block;
+
+}
+
