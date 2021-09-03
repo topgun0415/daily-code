@@ -62,14 +62,6 @@ const result1 = search.includes("카");
 console.log(result);    // "나"
 console.log(result1);   // "카"
 
-/*const search1 = ["A", "B", "C", "D", "E"];
-const result2 = search1.indexOf("C");  // 배열에서 몇번 째 값에 있는지 
-const result3 = search1.lastIndexOf("A");  // 마찬가지로 몇번째 배열에 있는지 확인 
-const result4 = search1.indexOf("Z");   // 배열에 존재하지 않은 
-console.log(result2);
-console.log(result3);
-console.log(result4);
-*/
 
 
 
