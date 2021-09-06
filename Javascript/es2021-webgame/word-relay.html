@@ -14,57 +14,44 @@
   <input type="text">  
   <button>입력</button> 
 <script>
-  const num = parseInt(prompt("몇 명이 참가하나요?"), 10);  // 10진법으로 저장하려면 끝에 10 , 2진법일 경우는 2를 추가로 적어준다.
-  console.log("number = " + (num));
-  alert((num) + "명을 입력하셨습니다."); 
-  
-  const yesOrNo = confirm("맞으면 확인을, 틀리면 취소를 눌러주세요");
-  console.log("yesOrNo = " + yesOrNo);
-
+  const num = Number(prompt("몇 명이 참가하나요?"));  // 10진법으로 저장하려면 끝에 10 , 2진법일 경우는 2를 추가로 적어준다.
+  const $input = document.querySelector("input");
+  const $button = document.querySelector("button");
   const $word = document.querySelector("#word");
-  
+  const $order = document.querySelector("#order");
   let word; // 제시어
   let newword; // 입력받은 단어
 
-// 자바스크립트에서 document.querySelector("태그")로 HTML 태그를 가져오는 것을 선택한다고 표현함.
-// 2개 이상의 태그를 선택하려면 querySelector가 아닌 querySelectorAll 를 반드시 사용해야한다!!
+  const onInput = (event) => {
+    newword = event.target.value;
+  };
 
-// id의 쿼리셀렉터 형식 : document.querySelector("#ID");
-// class의 쿼리셀렉터 형식 : document.querySelector(".class");
-// 태그 안에 들어있는 태그를 선택하는 형식 : document.querySelector("선택자(공백) 내부선택자(공백) 내부선택자")
-
-// 태그.addEventListener("이벤트 이름", 리스너함수)
-  
-  const Oninput = (event) => {
-    if(!word) { // 제시어가 비어있는가?
+  const onClickButton = () => {
+    if(!word) {
       word = newword;
       $word.textContent = word;
-    } else {
-       // 비어 있지 않다.
-    };
+      let order = Number($order.textContent);
+        if(order < num) {
+        $order.textContent = order + 1;
+      } else {
+        $order.textContent = 1;
+      }
+    } else { 
+        if(word[word.length - 1] === newword[0]){
+        $word.textContent = word;
+        let order = Number($order.textContent); 
+          if(order + 1 < num) {
+          $order.textContent = order + 1;
+           } else {
+          $order.textContent = 1;
+          } 
+        } else {
+
+        }
+    }
   }
-  console.log("글자 입력", event.target.value); 
-  const $input = document.querySelector("input");
-  $input.addEventListener("input", Oninput);
-
-  /*document.querySelector("input").addEventListener("input", (event) => {  
-    console.log("글자 입력", event.target.value);
-  });
-  */
-  
-// 콜백함수 : 특정 작업이 실행되고 난 뒤에 추가로 실행되는 함수 
-  const onClickButton = () => {  // 이벤트가 발생할 때 실행할 함수를 하나 만들고 
-    console.log("버튼 클릭");
-  } 
-  const $button = document.querySelector("button"); // 이 함수를 태그에 연결한다. 
-  $button.addEventListener("click", onClickButton); // 위의 태그에 addEventListener를 붙여 이벤트를 연결할 수 있다. 
-  
-  /* 위의 코드를 더 단순화 해서 만들 수 있다
-  document.querySelector("button").addEventListener("click", () => {
-    console.log("버튼 클릭");
-  });
-  */
-
+  $input.addEventListener("input", onInput);
+  $button.addEventListener("click", onClickButton); // 위의 태그에 addEventListener를 붙여 이벤트를 연결할 수 있다.  
 </script>
 </body>
 </html>
