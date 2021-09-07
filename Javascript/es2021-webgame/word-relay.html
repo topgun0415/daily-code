@@ -7,7 +7,6 @@
   <style>
   </style>
 </head>
-
 <body>
   <div><span id="order">1</span> 번째 참가자</div>  <!-- div는 공간, span은 text타입 감쌀때! -->
   <div>제시어: <span id="word"></span></div>
@@ -22,33 +21,28 @@
   let word; // 제시어
   let newword; // 입력받은 단어
 
+  const onClickButton = () => {
+    if(!word || word[word.length - 1] === newword[0]) {
+      word = newword;
+      $word.textContent = word;
+      let order = Number($order.textContent);
+      if(order >= num) {
+        $order.textContent = 1;
+        } else {
+        $order.textContent = order + 1;
+        } 
+    } else { 
+        console.log(alert("틀렸습니다!!"));
+        
+        }
+     }
+     $input.value = "";
+     $input.focus();  // 앤터를 누르고 나면 input의 value값이 비어지면서 커서가 깜빡임 
+
   const onInput = (event) => {
     newword = event.target.value;
   };
 
-  const onClickButton = () => {
-    if(!word) {
-      word = newword;
-      $word.textContent = word;
-      let order = Number($order.textContent);
-        if(order < num) {
-        $order.textContent = order + 1;
-      } else {
-        $order.textContent = 1;
-      }
-    } else { 
-        if(word[word.length - 1] === newword[0]){
-        $word.textContent = word;
-        let order = Number($order.textContent); 
-          if(order + 1 < num) {
-          $order.textContent = order + 1;
-           } else {
-          $order.textContent = 1;
-          } 
-        } else {
-        }
-    }
-  }
   $input.addEventListener("input", onInput);
   $button.addEventListener("click", onClickButton); // 위의 태그에 addEventListener를 붙여 이벤트를 연결할 수 있다.  
 </script>
