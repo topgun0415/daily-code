@@ -15,37 +15,39 @@
   <button>입력</button>
 <script>
   const member = Number(prompt("인원은 총 몇명입니까?")); // Game member
-  const $number = document.querySelector("#num"); // member's No
-  const $word = document.querySelector("#word"); // value of input box 
-  const $input = document.querySelector("input"); // input box  
-  const $button = document.querySelector("button"); // "입력" button 
-
-  let word; // first word  
-  let newword; // new word 
   
-  const buttonClick = () => {
-  if(!word || word[word.length - 1] === newword[0] && word.length === 3 ) {
-    word = newword;
-    $word.textContent = word;
-    let order = Number($number.textContent);
-    if(order >= member) {
-      $number.textContent = 1;
-    } else {
-      $number.textContent = 1 + order;
+  if(member) {
+    const $number = document.querySelector("#num"); // member's No
+    const $word = document.querySelector("#word"); // value of input box 
+    const $input = document.querySelector("input"); // input box  
+    const $button = document.querySelector("button"); // "입력" button 
+
+    let word; // first word  
+    let newword; // new word 
+  
+    const buttonClick = () => {
+    if(!word || (word[word.length - 1] === newword[0] && newword.length === 3)) {
+      word = newword;
+      $word.textContent = word;
+      let order = Number($number.textContent);
+      if(order >= member) {
+        $number.textContent = 1;
+        } else {
+        $number.textContent = 1 + order;
+        }
+    } else { 
+      alert("다시 입력해주세요!");
     }
-  } else { 
-    alert("다시 입력해주세요!");
+
+  } 
+  
+    const inputWord = (words) => {
+        newword = words.target.value;
+      }
+
+    $button.addEventListener("click", buttonClick);
+    $input.addEventListener("input", inputWord);
   }
-
-}
-  
-  const inputWord = (words) => {
-      newword = words.target.value;
-    }
-
-  $button.addEventListener("click", buttonClick);
-  $input.addEventListener("input", inputWord);
-
 </script>
 </body>
 </html>
