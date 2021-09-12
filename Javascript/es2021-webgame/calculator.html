@@ -38,7 +38,7 @@
   <div>
     <button id="clear">C</button>
     <button id="num-0">0</button>
-    <button id="calculate">=</button>
+    <button id="equal">=</button>
     <button id="multiply", class="operatorbox">x</button>
   </div>
 
@@ -50,19 +50,25 @@ let operator = "";
 const $operator = document.querySelector("#operator");
 const $result = document.querySelector("#result");
 const onClickNumber = (event) => {   
-	if(operator) {
-  	numTwo += event.target.textContent;      
-	} else {
-  	numOne += event.target.textContent;
-	}
-	$result.value += event.target.textContent;
-};
+  if(!operator) {
+    numOne += event.target.textContent;
+    $result.value += event.target.textContent;
+    return; // return문이 실행되면 밑 조건문들은 무시됨 
+  } 
+  // 이 아래로는 operator가 존재하는 경우에만 실행됨 
+  if(!numTwo) { // if 문 안에 if 문으로 계속 사용 가능 
+    $result.value = ""; // input이니까 value로 내부값 설정 
+  }
+  	numTwo += event.target.textContent;    
+    $result.value += event.target.textContent;  
+	};
+
 const onClickOperator = (op) => () => {
-	if(numOne) {
+  if(numOne) {
 		operator = op;
 		$operator.value = op	
 	} else {
-		alert("숫자를 먼저 입력하세요!")
+		alert("숫자를 먼저 클릭하세요!")
 	}
 };
 
@@ -84,8 +90,30 @@ document.querySelector("#add").addEventListener("click", onClickOperator("+"));
 document.querySelector("#subtract").addEventListener("click", onClickOperator("-"));
 document.querySelector("#divide").addEventListener("click", onClickOperator("/"));
 document.querySelector("#multiply").addEventListener("click", onClickOperator("x"));
-
-
+document.querySelector("#equal").addEventListener("click", () => {
+  if(numTwo) {
+    switch(operator) {
+      case "+" :  // 연산자로 바꾸게 되면 numOne과 numTwo는 문자열이기 때문에 예시로 : "35" + "34" = "3534"가 됨 그렇기 때문에 +만 int값으로 바꿔줘야함 
+      $result.value = Number(numOne) + Number(numTwo); 
+      break;
+      case "-" : 
+      $result.value = numOne - numTwo; 
+      break;
+      case "/" :
+      $result.value = numOne / numTwo; 
+      break;
+      case "*" :
+      $result.value = numOne * numTwo;  
+      break;
+    } 
+  } else {
+      alert("계산할 숫자를 먼저 눌러주세요!");
+    }
+});
+ 
 </script>
 </body>
 </html>
+
+
+
