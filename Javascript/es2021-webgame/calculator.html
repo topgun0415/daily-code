@@ -85,7 +85,17 @@ document.querySelector("#num-9").addEventListener("click", onClickNumber);
 document.querySelector("#num-0").addEventListener("click", onClickNumber);	
 
 //operator button 
-document.querySelector("#clear").addEventListener("click", onClickOperator("Clear"));
+document.querySelector("#clear").addEventListener("click", () => {
+  if(numOne) {
+    numOne = "";
+    numTwo = "";
+    operator = "";
+    $result.value = "";
+    $operator.value = "";
+  } else {
+    alert("숫자를 입력하세요!")
+  }
+});
 document.querySelector("#add").addEventListener("click", onClickOperator("+"));
 document.querySelector("#subtract").addEventListener("click", onClickOperator("-"));
 document.querySelector("#divide").addEventListener("click", onClickOperator("/"));
@@ -94,7 +104,7 @@ document.querySelector("#equal").addEventListener("click", () => {
   if(numTwo) {
     switch(operator) {
       case "+" :  // 연산자로 바꾸게 되면 numOne과 numTwo는 문자열이기 때문에 예시로 : "35" + "34" = "3534"가 됨 그렇기 때문에 +만 int값으로 바꿔줘야함 
-      $result.value = Number(numOne) + Number(numTwo); 
+      $result.value = parseInt(numOne) + parseInt(numTwo); 
       break;
       case "-" : 
       $result.value = numOne - numTwo; 
