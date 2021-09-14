@@ -1,0 +1,35 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>numberBaseball</title>
+    <link rel="shortcut icon" type="image/x-icon" href="baseball.png">
+</head>
+<body>
+	<h1 style="color: red; background-color: blue; text-align: left; width: 330px;"> number baseball game </h1>
+	<h3 style="text-align: left;">
+	first computer choose 4 number from 1 to 9 whitout same number. 
+	<p>you will have 10 chances to choose the numbers.</p>
+	<p>you should guess not only 4 numbers but order too.</p>
+	<p style="color: red;">Don't worry!! Although you got only 10 chances to choose, I will give you a hint when you have a wrong answer!</p>
+	</h3>
+	<form id="form">
+		<input type="text", id="input">
+		<button>확인</button>
+	</form>
+	<div id="logs"></div>
+	<div id="hint"></div>
+<script>
+	const $input = document.querySelector("#input");
+	const $form = document.querySelector("#form");
+	const $log = document.querySelector("#log");
+	const $hint = document.querySelector("#hint");
+
+	const number = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+	const randomNum = parseInt(Math.random * 10);
+	
+
+</script>
+</body>
+</html>
