@@ -67,7 +67,7 @@ const onClickNumber = (event) => {
 const onClickOperator = (op) => () => {
   if(numOne) {
 		operator = op;
-		$operator.value = op	
+		$operator.value = op
 	} else {
 		alert("숫자를 먼저 클릭하세요!")
 	}
@@ -117,6 +117,10 @@ document.querySelector("#equal").addEventListener("click", () => {
       $result.value = numOne * numTwo;  
       break;
     } 
+      numOne = $result.value;
+      numTwo = "";
+      
+
   } else {
       alert("계산할 숫자를 먼저 눌러주세요!");
     }
