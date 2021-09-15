@@ -15,7 +15,11 @@
 	<p style="color: red;">Don't worry!! Although you got only 10 chances to choose, I will give you a hint when you have a wrong answer!</p>
 	</h3>
 	<form id="form">
-		<input type="text", id="input">
+		<input 
+		required
+		type="text"
+		id="input"
+		minlength="4" maxlength="4" pattern="^(?!.*(.).*\1)\d{4}$">
 		<button>확인</button>
 	</form>
 	<div id="logs"></div>
@@ -26,9 +30,42 @@
 	const $log = document.querySelector("#log");
 	const $hint = document.querySelector("#hint");
 
-	const number = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-	const randomNum = parseInt(Math.random * 10);
+	const number = [];
+	for(let i = 0; i < 9; i++) {
+		number.push(i + 1);
+	}
+
+	const answer = [];
+	for(let k = 0; k < 4; k++) {
+		const index = parseInt(Math.random() * (number.length));
+		answer.push(number[index]);
+		number.splice(index, 1);
+	}
+	console.log(answer);
+
 	
+	const tries = [];  // ?? 어떠한 이유에서 존재하는지 모르겠음 
+	function checkInput(input) {
+		if(input.length !== 4) {
+			return alert("4자리 숫자로 입력해주세요!");
+		}
+		if(new Set(input).size !== 4) {
+			return alert("중복된 숫자를 다시 쳐주세요!");
+		}
+		if(tries.includes(input)) {
+			return alert("입력했던 번호는 재입력 불가합니다!");
+		} 
+		return true;
+	};
+	$form.addEventListener("submit", (event) => { // 보통 입력창이 있으면 폼 태그로 감싸서 submit 이벤트를 사용하는 것이 좋습니다. 그래야 버튼을 클릭하지 않고도 enter로 눌러 값을 제출 가능!
+		event.preventDefault();
+		const value = $input.value;
+		console.log($input.value);
+		$input.value = "";
+		const valid = checkInput(value); 
+	});	
+
+
 
 </script>
 </body>
