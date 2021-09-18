@@ -22,12 +22,12 @@
 		minlength="4" maxlength="4" pattern="^(?!.*(.).*\1)\d{4}$">
 		<button>확인</button>
 	</form>
-	<div id="logs"></div>
+	<div style = "color: crimson;"id="logs"></div>
 	<div id="hint"></div>	
 <script>
 	const $input = document.querySelector("#input");
 	const $form = document.querySelector("#form");
-	const $log = document.querySelector("#log");
+	const $logs = document.querySelector("#logs");
 	const $hint = document.querySelector("#hint");
 
 	const number = [];
@@ -64,15 +64,40 @@
 		console.log(value);
 		const valid = checkInput(value);
 		if(!valid) {return}	// valid가 맞지 않으면 돌아가기 
+
 		if(answer.join("") === value) {	// answer 과 일치하면 홈런이 뜨게 하기
-			$log.textContent = "축하드립니다! 홈런입니다!";
+			$logs.textContent = "축하드립니다! 홈런입니다!";
 			return;
 		}						
-		// if(tries.length >= 9){ 
-		// 	$log.textContent + "10번 이상 시도하셨습니다! 아웃입니다!"
-		// 	return;
-		// }
-	
+		if(tries.length >= 9){ 
+			const message = document.createTextNode("패배! 정답은 " + answer + " 입니다.");
+			$logs.appendChild(message);
+			return;
+		}
+		
+		// answer = [ 3 1 2 4 ] value = [ 0 3 2 1] /  ball : 1  strike : 1 
+		let strike = 0;
+		let ball = 0;
+		for(i = 0; i < answer.length; i++) {
+			const index = value.indexOf(answer[i]);
+			if(index > -1) {
+				
+			}
+
+
+
+
+
+
+
+
+		}
+
+
+
+
+		tries.push(value);
+		console.log(tries);	
 	});	
 
 
