@@ -23,7 +23,7 @@
 		<button>확인</button>
 	</form>
 	<div style = "color: crimson;"id="logs"></div>
-	<div id="hint"></div>	
+	<div style = "color: rgb(59, 59, 59);"id="hint"></div>	
 <script>
 	const $input = document.querySelector("#input");
 	const $form = document.querySelector("#form");
@@ -81,21 +81,14 @@
 		for(i = 0; i < answer.length; i++) {
 			const index = value.indexOf(answer[i]);
 			if(index > -1) {
-				
+			  if(index === i) {
+					strike += 1;
+				} else {
+					ball += 1;
+				}
 			}
-
-
-
-
-
-
-
-
 		}
-
-
-
-
+		$hint.append(`${value} -> 스트라이크: ${strike} || 볼: ${ball}`, document.createElement("br"));
 		tries.push(value);
 		console.log(tries);	
 	});	
