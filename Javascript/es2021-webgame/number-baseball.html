@@ -79,10 +79,10 @@
 		let strike = 0;
 		let ball = 0;
 		// <forEach문으로 나타내기>
-		answer.forEach((number, aindex) => {  // (number)3 = aindex(0) (number)1 = aindex(1) (number)2 = aindex(2) (number)4 = aindex(3)
-			const index = value.indexOf(String(answer));
+		answer.forEach((number, aIndex) => {  // (number)3 = aindex(0) (number)1 = aindex(1) (number)2 = aindex(2) (number)4 = aindex(3)
+			const index = value.indexOf(String(number));
 			if(index > -1) {
-				if(index === aindex) {
+				if(index === aIndex) {
 					strike += 1; 
 				} else {
 					ball += 1;
