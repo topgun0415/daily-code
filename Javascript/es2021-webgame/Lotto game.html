@@ -1,0 +1,46 @@
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lotto Program</title>
+    <style> 
+    .ball {
+      display: inline-block;
+      border: 1px solid black;
+      border-radius: 20px;
+      width: 40px;
+      height: 40px;
+      line-height: 40px;
+      font-size: 20px;
+      text-align: center;
+      margin-right: 20px;
+    }
+    </style>
+    <link rel="shortcut icon" type="image/x-icon" href="Lotto.jpeg">
+    <h1>Lotto Program</h1>
+</head>
+
+<body>
+  <input id="button", type="button", style="width: 60pt; height: 25pt;", value="Start"> 
+  <div id="result"><h2>pick:</h2></div>
+  <div id="bonus"><h2>bonus:</h2></div>
+ <script>
+  const $button = document.querySelector("#button");
+  const $result = document.querySelector("#result");
+  const $bonus = document.querySelector("#bonus");
+
+  const candidate = Array(45).fill().map((v,i) => i + 1);  // 1부터 45까지 뽑아 candidate에 저장 (i = random 값의 index num)
+  const shuffle = [];
+ 
+  while(candidate.length > 0) {
+    const random = Math.floor(Math.random() * candidate.length);
+    const spliceArray = candidate.splice(random, 1);
+    const value = spliceArray[0];     
+
+  }
+
+
+ </script>
+</body>
+</html>
