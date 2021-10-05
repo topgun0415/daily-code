@@ -159,3 +159,55 @@ a:visited {
   padding : 10px;
   box-sizing : border-box;
 }
+
+.p-box {
+  width: 800px;
+  height: 500px;
+  border: 1px solid yellow;
+  margin-top: 30px;
+  position:relative;
+  background-image: url("../05OCT21/unnamed.jpeg");
+  background-position: 150px;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 900px;
+}
+
+.p-box h1 {
+  top:100px;
+  left:200px;
+  position:absolute;
+}
+
+.p-box h2 {
+  position:absolute;
+  top:300px;
+  left:500px;
+}
+
+.fix-me {
+  position:fixed;
+  top:400px;
+  background-color: white;
+}
+
+/* sudo elements */
+.my-list li:first-child {
+  background-color:red;
+}
+
+.my-list li:last-child {
+  background-color: blue;
+}
+/* You can choose the number to decorate it */
+.my-list li:nth-child(5) {
+  background-color: yellow;
+}
+
+.my-list li:nth-child(even) {
+  background-color: green;
+}
+
+
+
+
