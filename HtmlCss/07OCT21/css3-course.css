@@ -1,0 +1,97 @@
+body {
+  background-color: lightgray;
+  color: #555;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  line-height: 1.6em;
+  margin: 0;
+}
+
+.container {
+  width: 80%;
+  margin: auto;
+  overflow:hidden;
+}
+
+.main-header {
+  background-color: coral;
+  color: white;
+}
+
+.nav-bar {
+  background-color: #333;
+  color: white;
+}
+
+.nav-bar ul {
+  padding: 10px;
+  padding-left: 85px;
+  margin: 0px;
+  list-style: none;
+}
+
+.nav-bar li {
+  display: inline;
+}
+
+.nav-bar a {
+  color: white;
+  text-decoration: 0;
+  font-size: 18px;
+  padding-right: 15px;
+}
+
+#showcase {
+  background-image: url(../07OCT21/bigsur\ wallpaper.jpeg);
+  background-position: center right;
+  background-size: cover;
+  min-height: 400px;
+  
+  margin-bottom: 30px;
+  text-align: center;
+  
+}
+
+#showcase h1 {
+  color:  white;
+  font-size: 40px;
+  line-height: 1.6em;
+  padding-top: 40px;
+  margin-top: 0px;
+}
+
+#main {
+  float: left;
+  width: 70%;
+  padding: 0 30px;
+  box-sizing: border-box;
+}
+
+#side-bar {
+  float: right;
+  width: 30%;
+  padding: 10px;
+  background-color: #333;
+  color:  white;
+  box-sizing: border-box;
+}
+
+#main-footer {
+  background: darkgrey;
+  color: white;
+  text-align: center;
+  padding: 10px;
+  margin-top: 250px;
+} 
+
+@media(max-width:600px) {
+  #main-header { 
+    width: 100%;
+    float: none;
+  }
+
+  #side-bar {
+    width: 100px;
+    float: none;
+  }
+}
