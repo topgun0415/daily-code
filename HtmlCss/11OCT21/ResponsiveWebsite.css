@@ -3,6 +3,9 @@
 
 :root {
   --primary-color: #047aed;
+  --secondary-color: #1c3fa8;
+  --dark-color: #002240;
+  --light-color: #f4f4f4;
 }
 
 * {
@@ -94,7 +97,7 @@ img {
   position: relative;
   top: -25px;
   height: 318px;
-  width: 360px;
+  width: 300px;
   right: 25px;
   padding: 25px;
   z-index: 100;
@@ -122,7 +125,7 @@ img {
 .showcase::after {
   content: '';
   position: absolute;
-  height: 100px;
+  height: 00px;
   bottom: -70px;
   right: 0;
   left: 0;
@@ -139,7 +142,9 @@ img {
 }
 
 .stats-heading {
-  max-width: 500px;
+  max-width: 1000px;
+  font-weight: bolder;
+  color: var(--primary-color);
   margin: auto;
 }
 
@@ -150,4 +155,44 @@ img {
 .stats .grid p {
   font-size: 20px;
   font-weight: bold;
+}
+
+/* Cli */
+
+.cli .grid {
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+}
+
+.cli .grid > *:first-child {
+  grid-column: 1 / span 2;
+  grid-row: 1 / span 2;
+}
+
+/* Cloud */
+
+.cloud .grid {
+  grid-template-columns: 4fr 3fr;
+}
+
+/* Language */
+
+.languages .mcard {
+  text-align: center;
+
+  margin: 18px 10px 40px;
+  transition: transform 0.2s ease-in;
+}
+
+.languages .mcard h4 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+.languages .mcard:hover {
+  transform: translateY(-15px);
+}
+
+.footer .social a {
+  margin: 0 10px;
 }
