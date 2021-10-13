@@ -1,0 +1,9 @@
+{
+    "version": 3,
+    "mappings": "AAAA,cAAc",
+    "sources": [
+        "underscore-config.scss"
+    ],
+    "names": [],
+    "file": "underscore-config.css"
+}
