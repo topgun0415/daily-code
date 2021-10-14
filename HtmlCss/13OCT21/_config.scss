@@ -6,6 +6,7 @@ $light-color: #f4f4f4;
 $primary-color: #0e6cff;
 // $primary-color: #e0ffff;
 $secondary-color: #ff8700;
+$thrid-color: white;
 
 // Set text color based on bg
 @function set-text-color($color) {
@@ -20,4 +21,25 @@ $secondary-color: #ff8700;
 @mixin set-background($color) {
   background-color: $color;
   color: set-text-color($color);
+}
+
+// Margin & Padding classes
+$spaceamounts: (1, 2, 3, 4, 5);
+
+@each $space in $spaceamounts {
+  .m-#{$space} {
+    margin: #{$space}rem;
+  }
+
+  .my-#{$space} {
+    margin: #{$space}rem 0;
+  }
+
+  .p-#{$space} {
+    padding: #{$space}rem;
+  }
+
+  .py-#{$space} {
+    padding: #{$space}rem 0;
+  }
 }
