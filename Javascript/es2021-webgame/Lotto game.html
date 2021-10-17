@@ -1,10 +1,10 @@
-<html lang="en">
+<!-- @format -->
+
+<!DOCTYPE html>
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Lotto Program</title>
-    <style> 
+  <meta charset="utf-8" />
+  <title>로또추첨기</title>
+  <style>
     .ball {
       display: inline-block;
       border: 1px solid black;
@@ -16,31 +16,28 @@
       text-align: center;
       margin-right: 20px;
     }
-    </style>
-    <link rel="shortcut icon" type="image/x-icon" href="Lotto.jpeg">
-    <h1>Lotto Program</h1>
+  </style>
 </head>
 
 <body>
-  <input id="button", type="button", style="width: 60pt; height: 25pt;", value="Start"> 
-  <div id="result"><h2>pick:</h2></div>
-  <div id="bonus"><h2>bonus:</h2></div>
- <script>
-  const $button = document.querySelector("#button");
-  const $result = document.querySelector("#result");
-  const $bonus = document.querySelector("#bonus");
-
-  const candidate = Array(45).fill().map((v,i) => i + 1);  // 1부터 45까지 뽑아 candidate에 저장 (i = random 값의 index num)
-  const shuffle = [];
- 
-  while(candidate.length > 0) {
-    const random = Math.floor(Math.random() * candidate.length);
-    const spliceArray = candidate.splice(random, 1);
-    const value = spliceArray[0];     
-
-  }
-
-
- </script>
+  <div id="result">추첨 결과는?</div>
+  <div id="bonus">보너스:</div>
+  <script>
+    const candidate = Array(45)
+      .fill()
+      .map((v, i) => i + 1);
+    const shuffle = [];
+    while (candidate.length > 0) {
+      const random = Math.floor(Math.random() * candidate.length); //무작위 인덱스 뽑기
+      const spliceArray = candidate.splice(random, 1); // 뽑은 값은 배열에 들어 있음
+      const value = spliceArray[0]; // 배열에 들어 있는 값을 꺼내어
+      shuffle.push(value);
+    }
+    console.log(shuffle);
+    const winBalls = shuffle.slice(0,6).sort((a,b) => a - b)
+    const bonusBall = winBalls[6];
+    console.log(winBalls, bonusBall);
+    
+  </script>
 </body>
 </html>
