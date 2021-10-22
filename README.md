@@ -2,11 +2,11 @@
 
 # Daily-Coding Repo
 
-## Welcome to my Daily-Coding Repo ✏️
+### Welcome to my Daily-Coding Repo ✏️
 
-## Here is a repo that I push my source code only ~ ✌🏻
+### Here is a repo that I push my source code only ~ ✌🏻
 
-## I'm focusing on Javascript & React JS recently ☺️
+### I'm focusing on Javascript & React JS recently ☺️
 
 ---
 
