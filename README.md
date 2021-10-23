@@ -19,7 +19,9 @@
 `Frontend`
 
 - HTML & CSS(SCSS)
+
 - Javascript
+
 - React JS
 
 ---
