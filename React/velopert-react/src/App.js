@@ -1,25 +1,32 @@
-import logo from './logo.svg';
+/** @format */
+import React from 'react';
 import './App.css';
 
 function App() {
+  const name = 'React JS';
+  const style3 = 'CSS + React';
+  const style2 = {
+    // background-color는 backgroundColor와 같이 파스칼 표기법이 아닌 카멜케이스로 변경됨
+    backgroundColor: 'black',
+    color: 'yellow',
+    fontSize: '48px',
+    fontWeight: 'bold',
+    padding: 25,
+  };
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div
+      style={{
+        // background-color는 backgroundColor와 같이 파스칼 표기법이 아닌 카멜케이스로 변경됨
+        backgroundColor: 'black',
+        color: 'aqua',
+        fontSize: '48px',
+        fontWeight: 'bold',
+        padding: 25,
+      }}>
+      {name}
+      <div style={style2}>React Ninja</div>
+      <div className='react'>{style3}</div>
     </div>
   );
 }
-
 export default App;
