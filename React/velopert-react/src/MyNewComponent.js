@@ -3,6 +3,14 @@ import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 
 class MyNewComponent extends Component {
+  static defaultProps = {
+    name: '123',
+  };
+
+  static propTypes = {
+    name: PropTypes.string,
+    favoriteNumber: PropTypes.number.isRequired,
+  };
   render() {
     const { name, children, favoriteNumber } = this.props;
     return (
@@ -25,12 +33,13 @@ class MyNewComponent extends Component {
 //   );
 // };
 
-MyNewComponent.defaultProps = {
-  name: '123',
-};
+// MyNewComponent.defaultProps = {
+//   name: '123',
+// };
 
-MyNewComponent.propTypes = {
-  name: PropTypes.string,
-  favoriteNumber: PropTypes.number.isRequired,
-};
+// MyNewComponent.propTypes = {
+//   name: PropTypes.string,
+//   favoriteNumber: PropTypes.number.isRequired,
+// };
+
 export default MyNewComponent;
