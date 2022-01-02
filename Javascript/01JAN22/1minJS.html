@@ -1,0 +1,183 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Basic of Javascript</title>
+
+    <!-- CSS -->
+    <style>
+      body {
+        font-size: 3rem;
+      }
+      h1 {
+        background-color: #fff000;
+      }
+
+      ul li {
+        list-style: none;
+      }
+
+      .href-google {
+        background-color: lightcoral;
+      }
+
+      .special {
+        background-color: lightpink;
+      }
+
+      .btn {
+        font-size: 2rem;
+      }
+      
+      .menu {
+        background: yellowgreen;
+      }
+
+      .menu-link {
+        border: 2px solid dodgerblue;
+        margin: .1em;
+        padding: .3em;
+        list-style: none;
+        color: #fff;
+        background-color: dodgerblue;
+        text-decoration: none;
+      }
+      
+      .menu-active {
+        background: orange;
+      }
+
+      
+    </style>
+    <!-- 자바스크립트는 위에서 차례대로 밑으로 읽어나간다. 만약에 head부분에 script를 넣게 되면 body에 있는 html tag들을 읽지 못해 document.queryselector를 지정해도 읽지를 못한다. -->
+
+    <script>
+      // window.onload = function () {
+      //   const $title = document.querySelector('#main-title');
+      //   console.log($title);
+      // };
+
+      // window.addEventListener('load', function () {
+      //   const $title = document.querySelector('#main-title');
+      //   console.log($title);
+      // });
+
+      // window.addEventListener('DOMContentLoaded', function () {
+      //   const $title = document.querySelector('#main-title');
+      //   console.log($title);
+      // });
+    </script>
+  </head>
+  <!-- HTML -->
+  <body>
+    <h1 id="main-title">DOM (Document Object Model)</h1>
+    <ul class="ilbuni-mom">
+      <li class="ilbuni">Hello</li>
+      <a href="www.google.com" class="href-google">Google</a>
+      <li class="ilbuni">World</li>
+      <li class="ilbuni">Javascript</li>
+    </ul>
+    <button class="btn">클릭하세요!!</button>
+    
+    <nav class="menu">
+      <a href="#" class="menu-link" data-menu="1">menu1</a>
+      <a href="#" class="menu-link" data-menu="2">menu2</a>
+      <a href="#" class="menu-link" data-menu="3">menu3</a>
+    </nav>
+
+    </article>
+    <!-- 그러므로 body 맨 끝쪽에서 script를 작성하는 경우가 많다. 그리고 body 맨 끝에 script를 작성하는 이유는 무엇보다 스크립트 파일의 갯수가 많아지면 용량의 압박이 심해지고 이로 인해 Head에 적혀진 스크립트 파일을 읽는데 비교적 긴 시간이 소요될 수 있다. 특히나 DOM의 경우 위에서 node를 불러오기 때문에 사용자의 경우 눈에 보이지 않은 스크립트 파일을 읽느라 화면을 담당하고 눈에 보여지는 html 및 css 태그들이 느리게 불러와져 사용자가 느리게 체감될 수 있기에 script 파일을 느리게 읽는게 오히려 사용자 입장에서는 빠르게 느껴질 수 있다.  -->
+    <!-- Javascript -->
+    <script>
+      // const $title = document.querySelector('#main-title');
+      // const $titleSpan = $title.getElementsByTagName('span');
+      // console.log($titleSpan[0]);
+      // const $title = document.querySelector('#main-title');
+      // const $li =  document.querySelectorAll('.ilbuni');
+      // console.log($li);
+      // console.log($title);
+      
+      // for (let i = 0; i < $li.length; i++) {
+      //   $li[i].style.border = '2px solid red';
+      // }
+
+      const $href = document.querySelector('.href-google');
+      console.log($href.getAttribute('href'));
+      $href.setAttribute('href', 'http://www.naver.com');
+      console.log($href.getAttribute('href'));
+
+      // 클래서 이름 넣고 빼기
+      // $href.className = 'special'; 요즘은 잘 쓰이지 않는 문법
+      $href.classList.add('special', 'foo');
+      setTimeout( () => {
+        $href.classList.remove('special');
+      }, 2000);
+      console.log($href.classList.contains('foo')); // contains로 class 이름을 갖고 있는지 없는지에 대해서 결과값을 boolean으로
+
+      // element를 자바스크립트로 생성
+      const ilbuniMom = document.querySelector('.ilbuni-mom');
+      const listElem = document.createElement('li');
+      listElem.innerHTML = '<span>일분이</span>';
+      console.log(listElem);
+      listElem.innerText = "이분이";
+      ilbuniMom.appendChild(listElem);
+
+      // event 설명
+      const btn = document.querySelector('.btn');
+      const mainTitle = document.querySelector('#main-title');
+      
+      function btnClickHandler() {
+        mainTitle.style.backgroundColor = "dodgerblue";
+      }
+      btn.addEventListener('click', btnClickHandler);
+      // btn.onClick = btnClickHandler;
+      
+
+      // event 를 사용해서 다양한 작업들을
+      // const menuLinks = document.querySelectorAll('.menu-link');
+      // var currentMenu;
+
+      // function clickMenuHandler()  {
+      //   if(currentMenu) {
+      //     currentMenu.classList.remove('menu-active');
+      //   } 
+      //     this.classList.add('menu-active');
+      //     currentMenu = this;
+      // }
+
+       // menuLinks[1].classList.add('menu-active'); : 이걸 누르면 menuLinks[1]번 인덱스의 박스가 오렌지 색깔로 바뀜
+      //   DOM 의존적이여서 좋지 않은 코드임
+      //   var activeMenu = document.querySelector('.menu-active');
+      //   if(activeMenu) {
+      //     activeMenu.classList.remove('menu-active'); 
+      //     
+      //   } 
+      //     this.classList.add('menu-active');
+      // }
+      // for (let i = 0; i < menuLinks.length; i++) {
+      //   menuLinks[i].addEventListener('click', clickMenuHandler);
+      // }
+     
+      // 이벤트 위임 
+      var menu = document.querySelector('.menu');
+      var currentMenu;
+
+      function clickHandler(e) {
+        // console.log(e.currentTarget);
+        // console.log(e.currentTarget === this); // true
+        console.log(e.target);
+        if(currentMenu) {
+          currentMenu.classList.remove('menu-active');  
+        }
+        e.target.classList.add('menu-active');
+        currentMenu = e.target;
+        console.log('currentMenu =', currentMenu);
+      }
+      menu.addEventListener('click', clickHandler)
+    </script>
+  </body>
+</html>
