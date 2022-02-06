@@ -1,0 +1,144 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <input type="text" class="input" />
+    <!-- 1. attribute event handler : this is not good way to use in ES2021 or in vanila JS but you can see these attribute event handler in mordern JS framework like react, vue, svelte -->
+    <!-- React : <button onClick = {handleClick}>save</button>  -->
+    <!-- Svelte : <button on:click={handleClick}>save</button> -->
+    <!-- Vue : <button v-on:click="handleClick($event)"Save</button> -->
+
+    <button id="btn" onclick="alert('you clicked');">Click Here</button>
+    <!-- <button id="btn" onclick="onClickhandler('You clicked')">Click Here</button> -->
+    <br />
+    <em class="msg_text"></em>
+
+    <ul id="fruits">
+      <li class="apple">Apple</li>
+      <li class="grape">grape</li>
+    </ul>
+    <input type="checkbox" />
+    <em class="msg">off</em>
+
+    <br />
+    <br />
+    <br />
+    <br />
+
+    <div class="bubbling" style="background-color: dodgerblue; color: red">
+      Click here
+    </div>
+    <script>
+      const $fruit = document.querySelector('#fruits');
+      const $apple = $fruit.firstElementChild;
+      const $grape = $fruit.lastElementChild;
+      const $btn = document.querySelector('#btn');
+      const $window = document;
+      const $input = document.querySelector('.input');
+      const $checkbox = document.querySelector('input[type=checkbox]');
+      const $checkbox_msg = document.querySelector('.msg');
+      const $msg_text = document.querySelector('.msg_text');
+
+      // Capturing & bubbling practice
+
+      const $body = document.querySelector('body');
+      const $bubble = document.querySelector('.bubbling');
+
+      const li = document.createElement('li'); // 요소 노드 생성
+      const li_2 = document.createElement('li');
+
+      const bananaNode = document.createTextNode('banana'); // 텍스트 노드 생성
+      const orangeNode = document.createTextNode('orange');
+
+      li.appendChild(bananaNode); // 택스트 노드를 $li 요소 노드의 자식 노드로 추가
+      li_2.appendChild(orangeNode); // 택스트 노드를 $li 요소 노드의 자식 노드로 추가
+
+      $fruit.appendChild(li); // $li 요소 노드를 #fruits 요소 노드의 마지막 자식 노드로 추가
+      $fruit.insertBefore(li_2, $fruit.lastElementChild); // $li 요소 노드를 #fruits 요소 노드의 마지막 자식 노드로 추가
+      $fruit.removeChild($apple);
+
+      const onClickhandler = function (msg) {
+        alert(msg);
+      };
+
+      // 노드복사 : Node.prototype.cloneNode(true || false(defalut)) ture는 깊은 복사, false는 얉은 복사
+      // 노드이동 : Node.prototype.insertBefore(newNode, childNode)
+      // 노드교체 : Node.prototype.replaceChild(newChild, oldChild)
+      // 노드삭제 : Node.prototype.removeChild(child)
+
+      // $fruit.innerHTML += '<li class="banana">Banana</li>'; HTML 태그 및 텍스트 저장
+
+      // 2. Property event handler binding : this method can solve seperating HTMl & JS but the problem is this can't bind over 2 event hanlders on a event variable like $btn.
+
+      $btn.onclick = () => {
+        alert('Thank you for click me ');
+      };
+
+      $btn.onclick = null;
+
+      // $window.onmousemove = (e) => {
+      //   console.log(e.screenX, e.screenY);
+      // };
+
+      $window.ondblclick = () => {
+        alert('double clicked');
+      };
+
+      $window.onchange = () => {
+        console.log('onChange detected');
+      }; // When broswer found something change ( such as input value changed .. )on the website then process callback function
+
+      // 3. addEventListener event handler binding : the other ways were could not bind more than two events (Property event binding) but using addEventListener methods can use more than one event handler but it work orderly. if the callback function is same, then the only the first one will work.
+
+      $btn.addEventListener('click', () => {
+        alert('addEventListener processed[1]');
+      });
+
+      $btn.addEventListener('click', function foo() {
+        alert('addEventListener processed[2]');
+        $btn.removeEventListener('click', foo); // 한번 호출되긴 해서 작동 안하는건 아님
+      });
+
+      $input.addEventListener('input', (e) => {
+        console.log(e.target.value);
+        $msg_text.textContent = e.target.value;
+      });
+      // remove event handler but you can't not delete when you use arrow function as a callback function
+      // $btn.removeEventListener();
+
+      // $window.addEventListener('dblclick', () => {
+      //   alert('move detected');
+      // });
+
+      // if checkbox chekced then change text 'off' into 'on'
+      $checkbox.onchange = (e) => {
+        $checkbox_msg.textContent = e.target.checked ? 'on' : 'off';
+        console.log();
+      };
+
+      // Event capturing & targeting & bubbling (these are in very rare situation)
+
+      $window.addEventListener(
+        'click',
+        () => {
+          console.log('html');
+        },
+        true
+      );
+      $body.addEventListener('click', () => console.log('body'));
+      $bubble.addEventListener('click', () => {
+        console.log('bubble');
+      });
+
+      // order : bubble -> body -> html (event bubbling is default value)
+      // capturing processed : html -> bubble -> body
+    </script>
+  </body>
+</html>
