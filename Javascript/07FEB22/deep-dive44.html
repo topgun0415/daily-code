@@ -1,0 +1,61 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="container" style="background-color: dodgerblue">
+      <button class="btn1">Button 1</button>
+      <button class="btn2">Button 2</button>
+      <button class="btn3">Button 3</button>
+    </div>
+
+    <button class="btn_1">0</button>
+    <button class="btn_2">0</button>
+    <script>
+      const $button1 = document.querySelector('.btn_1');
+      const $button2 = document.querySelector('.btn_2');
+
+      // 이벤트 핸들러 프로퍼티 방식
+      $button1.onclick = function (e) {
+        // this는 이벤트 바인딩한 DOM 요소를 가리킨다.
+        console.log(this); // $button1
+        console.log(e.currentTarget); // $button1
+        console.log(this === e.currentTarget); // true
+
+        // $button1의 textContent를 1 씩 증가시킨다.
+        ++this.textContent;
+      };
+
+      $button2.addEventListener('click', function (e) {
+        // this는 이벤트를 바인딩한 DOM 요소를 가리킨다
+        console.log(this);
+        console.log(e.currentTarget); //
+        console.log(this === e.currentTarget); // false
+
+        ++this.textContent;
+      });
+      // 화살표 함수로 하면 this는 상위 스코프인 window / global을 가리키게 된다. 이는 화살표함수 자체에 this 바인딩을 가지고 있지 않기 때문
+
+      // 이벤트 위임 : 클릭된 하위 버튼 요소의 color를 변경한다
+      document.querySelector('.container').onclick = (e) => {
+        if (!e.target.matches('.container > button')) return;
+        e.target.style.color = 'red';
+      };
+
+      // .btn2 요소는 이벤트를 전파하지 않으므로 상위 요소에서 이벤트를 캐치할 수 없다.
+      document.querySelector('.btn2').onclick = (e) => {
+        e.stopPropagation(); // 이벤트 전파 중단
+        e.target.style.color = 'blue';
+      };
+
+      // 디바운스(debounce) : 연이어 호출되는 함수들 중에서 (처음이나) 마지막 함수만 실행되게 하는 것 (for example : Search Engine)
+      // 스로틀(throttle) : 마지막 함수가 호출된 일정기간이 지나기 전에는 다시 호출 되지 않는 것 (for example : unlimited scrolling)
+    </script>
+  </body>
+</html>
