@@ -1,0 +1,40 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ajax Practice</title>
+  </head>
+  <body>
+    <h1>This is Ajax Get Practice</h1>
+    <h2>This is the data from server</h2>
+    <div class="data">
+      <span id="'price"></span>
+    </div>
+    <script>
+      const $price = document.getElementById('price');
+      const $data = document.querySelector('.data');
+
+      fetch('https://codingapple1.github.io/price.json')
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error('400 아니면 500 에러남');
+          }
+          console.log(response);
+          return response.json();
+        })
+        .then((result) => {
+          console.log(result);
+          const priceResult = JSON.stringify(result);
+          console.log(priceResult);
+          $data.textContent = priceResult;
+        })
+        .catch(() => {
+          console.log('404 Error');
+        });
+    </script>
+  </body>
+</html>
