@@ -1,0 +1,28 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>GET index</title>
+  </head>
+  <body>
+    <h1>REST API 'GET' Pratice</h1>
+    <pre></pre>
+    <script>
+      const xhr = new XMLHttpRequest();
+      xhr.open('GET', '/todos/');
+      // xhr.open('GET', '/todos/3'); : db.json에 있는 특정 id 값을 불러와 해당 데이터만 출력 함
+      xhr.send();
+      xhr.onload = () => {
+        if (xhr.status === 200) {
+          document.querySelector('pre').textContent = xhr.response;
+        } else {
+          console.error('Error', xhr.status, xhr.statusText);
+        }
+      };
+    </script>
+  </body>
+</html>
