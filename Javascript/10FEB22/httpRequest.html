@@ -1,0 +1,86 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>XMLHttpRequest</title>
+  </head>
+  <body>
+    <h1>hello</h1>
+    <h2 id="value"></h2>
+    <script>
+      const $value = document.getElementById('value');
+
+      const xhr = new XMLHttpRequest();
+      // HTTP 요청 초기화
+      // 이하 사이트는 Fake REST API를 제공하는 사이트다
+      xhr.open('GET', 'https://jsonplaceholder.typicode.com/todos/2');
+
+      // HTTP 요청 전송
+      xhr.send();
+
+      // readystatechange 이벤트는 HTTP 요청의 현재 상태를 나타내는 readyState 프로퍼티가 변경될 때마다 발생한다
+      xhr.onreadystatechange = () => {
+        // readyState 프로퍼티는 HTTP 요청의 현재 상태를 나타낸다.
+        // readyState 프로퍼티 값이 4(XMLHttpRequest.DONE)가 아니면 서버 응답이 완료되지 않은 상태다.
+
+        // 만약 서버 응답이 아직 완료되지 않았다면 아무런 처리를 하지 않는다.
+        if (xhr.readyState !== XMLHttpRequest.DONE) return;
+
+        // status 프로퍼티는 응답 상태 코드를 나타낸다.
+        // status 프로퍼티 값이 200이면 정상적으로 응답된 상태이고
+        // status 프로퍼티 값이 200이 아니면 에러가 발생한 상태다
+        // 정상적으로 응답된 상태라면 response 프로퍼티에 서버의 응답 결과가 담겨있다
+        if (xhr.status === 200) {
+          console.log(JSON.parse(xhr.response));
+          // completed: false
+          // id: 1
+          // title: "delectus aut autem"
+          // userId: 1
+        } else {
+          conosle.error('Error', xhr.status, xhr.statusText);
+        }
+      };
+
+      // 위에보다 더 쉬운 방법이 있다. xhr.readystatechage 이벤트 대신 load 이벤트를 캐치해도 좋다. load 이벤트는 HTTP 요청이 성공적으로 완료된 경우 발생한다. 따라서 load 이벤트를 캐치하는 경우 xhr.readyState가 XMHttpRequest.DONE인지 확인할 필요 없다.
+
+      const xhr1 = new XMLHttpRequest();
+      xhr1.open('GET', 'https://jsonplaceholder.typicode.com/todos/3');
+      xhr1.send();
+      xhr1.onload = () => {
+        if (xhr1.status === 200) {
+          console.log(JSON.parse(xhr1.response));
+          const dataGet = JSON.parse(xhr1.response);
+          console.log(dataGet.id); // 3
+
+          // completed: false
+          // id: 2
+          // title: "quis ut nam facilis et officia qui"
+          // userId: 1
+        } else {
+          conosle.error('Error', xhr1.status, xhr1.statusText);
+        }
+      };
+    </script>
+    <script>
+      // REST API : REST는 HTTP/1.0과 1.1 스펙 작성에 참여했고 아파치 HTTP 서버 프로젝트의 공동 설립자인 로이 필딩의 2000년 논문에서 처음 소개되었다.
+
+      // REST API의 구성 : REST API는 자원, 행위, 표현의 3 가지 요소로 구성된다. REST는 자체표현구조로 구성되어 REST API만으로 HTTP 요청의 내용을 이해할 수 있다.
+
+      // REST API 설계원칙 : REST에서 가장 중요한 기본적인 원칙은 두 가지다. URI는 리소스를 표현하는데 집중하고 행위에 대한 정의는 HTTP 요청 메서드를 통해 하는 것이 RESTful API를 설계하는 중심 규칙이다.
+
+      // 1. URI는 리소스를 표현해야 한다. URI는 리소스를 표현하는데 중점을 두어야 한다. 리소스를 식별할 수 있는 이름은 동사보다는 명사를 사용한다. 따라서 이름에 get 같은 행위에 대한 표현이 들어가서는 안된다.
+
+      // 2. 리소스에 대한 행위는 HTTP 요청 메서드로 표현한다. HTTP 요청 메서드는 클라이언트가 서버에서 요청의 종류와 목적(리소스에 대한 행위)을 알리는 방법이다. 주로 5가지 요청 메서드를 사용하여 CRUD를 구현한다.
+
+      // GET / index/retrieve / 모든/특정 리소스 취득
+      // POST / create / 리소스생성
+      // PUT / replace / 리소스의 전체 교체
+      // PATCH / modify / 리소스의 일부 수정
+      // DELETE / delete / 모든/특정 리소스 삭제
+    </script>
+  </body>
+</html>
