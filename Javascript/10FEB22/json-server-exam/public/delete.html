@@ -1,0 +1,29 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>DELETE Pratice</title>
+  </head>
+  <body>
+    <pre></pre>
+    <script>
+      // DELETE 요청 : todos 리소스에서 id를 사용하여 todo를 삭제한다.
+
+      const xhr = new XMLHttpRequest();
+
+      xhr.open('DELETE', '/todos/3');
+      xhr.send();
+      xhr.onload = () => {
+        if (xhr.status === 200 || xhr.status === 201) {
+          document.querySelector('pre').textContent = xhr.response;
+        } else {
+          console.error('error', xhr.status, xhr.statusText);
+        }
+      };
+    </script>
+  </body>
+</html>
