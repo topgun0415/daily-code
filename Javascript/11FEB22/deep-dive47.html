@@ -1,0 +1,39 @@
+<!-- @format -->
+
+/** @format */
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // Promise : 자바스크립트는 비동기 처리를 위한 하나의 패턴으로 콜백 함수를 사용한다. 하지만 전통적인 콜백 패턴은 콜백 헬로 인해 가독성이 나쁘고 비동기 처리 중 발생한 에러의 처리가 곤란하여 여러 개의 비동기 처리를 한번에 처리하는데도 한계가 있다. ES6에서는 비동기 처리를 위한 또 다른 패턴으로 프로미스를 도입했다. 프로미스는 전통적인 콜백 패턴이 가진 단점을 보완하며 비동기 처리 시점을 명화갛게 표현할 수 있다는 장점이 있다.
+
+      // 비동기 처리를 위한 콜백 패턴의 단점
+
+      // 콜백 헬
+
+      const get = (url) => {
+        const xhr = new XMLHttpRequest();
+        xhr.open('GET', url);
+        // xhr.open('GET', '/todos/3'); : db.json에 있는 특정 id 값을 불러와 해당 데이터만 출력 함
+        xhr.send();
+        xhr.onload = () => {
+          if (xhr.status === 200) {
+            return JSON.parse(xhr.response);
+          }
+          console.error(`${xhr.status} ${xhr.statusText}`);
+        };
+      };
+
+      // id가 1인 post를 취득
+      get('https://jsonplaceholder.typicode.com/posts/1');
+
+      // get 함수는 비동기 함수다. 비동기 함수란 함수 내부에 비동기로 동작하는 코드를 포함한 함수를 말한다. 비동기 함수를 호출하면 함수를 호출하면 함수 내부의 비동기로 동작하는 코드가 완료되지 않았다 해도 기다리지 않고 즉시 종료된다. 즉 비동기 함수 내부의 비동기로 동작하는 코드는 비동기 함수가 종료된 이후에 완료된다. 따라서 비동기 함수 내부의 비동기로 동작하는 코드에서 처리 결과를 외부로 반환하거나 상위 스코프의 변수에 할당하면 기대한 대로 동작하지 않는다.
+    </script>
+  </body>
+</html>
