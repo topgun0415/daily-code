@@ -142,9 +142,9 @@ myclass.bar(5).then((v) => console.log(v)); // 5
 async function fnExample() {
   const a = await new Promise(function (resolve) {
     setTimeout(function () {
-      return resolve(1), 3000;
-    });
-  },
+      return resolve(1);
+    }, 3000);
+  });
   const b = await new Promise((resolve) => setTimeout(() => resolve(2), 2000));
   const c = await new Promise((resolve) => setTimeout(() => resolve(3), 1000));
 
@@ -160,3 +160,62 @@ fnExample(); // [ 1, 2, 3]  총 6초 소요
 // });
 
 // await new Promise((resolve) => setTimeout(() => resolve(1), 3000));
+
+// 모든 프로미스에 await 키워드를 사용하는것은 주의해야한다. 위 에제의 foo 함수는 종료될 때까지 약 6초가 소요된다. 첫 번째 프로미스는 settled 상태가 될 때까지 3초, 두번째 프로미스는 settled 상태가 될 때까지 2초, 세번째는 1초가 소요된다. 그런데 foo 함수가 수행하는 3개의 비동기 처리는 서로 연관이 없이 개별적으로 수행되는 비동기 처리이므로 앞선 비동기 처리가 완료될 때까지 대기해서 순차적으로 처리할 필요가 없다.
+
+async function fnExample2() {
+  const res1 = await Promise.all([
+    new Promise((resolve) => setTimeout(() => resolve(10), 3000)),
+    new Promise((resolve) => setTimeout(() => resolve(9), 2000)),
+    new Promise((resolve) => setTimeout(() => resolve(8), 1000)),
+  ]);
+  console.log(res1);
+}
+
+fnExample2(); // [ 10, 9, 8 ] 3초 소요
+
+// 다음의 fnExample3 함수는 앞선 비동기 처리의 결과를 가지고 다음 비동기 처리를 수행해야한다. 따라서 비동기 처리의 순서가 보장되어야 하므로 모든 프로미스에 await 키워드를 써서 순차적으로 처리할 수 밖에 없다.
+async function fnExample3(n) {
+  const a = await new Promise((resolve) => setTimeout(() => resolve(n), 3000));
+  const b = await new Promise((resolve) =>
+    setTimeout(() => resolve(a + 5), 2000)
+  );
+  const c = await new Promise((resolve) =>
+    setTimeout(() => resolve(b + 5), 1000)
+  );
+  console.log([a, b, c]);
+}
+fnExample3(1);
+
+// 에러 처리 : 비동기 처리를 위한 콜백 패턴의 단점 중 가장 심각한 것은 에러처리가 곤란하다는 것이다. 에러 처리의 한계에서 살펴보았듯이 에러는 호출자 방향으로 전파된다. 즉 콜 스택의 아래 방향(실행 중인 컨택스트가 푸시되기 직전에 푸시된 실행 컨택스트 방향)으로 전파된다. 하지만 비동기 함수의 콜백 함수를 호출한 것은 비동기 함수가 아니기 때문에 try...catch문을 사용해 에러를 캐치할 수 없다.
+
+// async/await 에서 에러처리는 try...catch문을 사용할 수 있다. 콜백 함수를 인수로 전달받는 비동기 함수와 달리 프로미스를 반환하는 비동기 함수는 명시적으로 호출할 수 있기 때문에 호출자가 명확하다.
+
+// const fetch = require('node-fetch');
+
+// const foo = async () => {
+//   try {
+//     const wrongUrl = 'https://wrong.url';
+//     const response = await fetch(wrongUrl);
+//     const data = await response.json();
+//     console.log(data);
+//   } catch (err) {
+//     console.error(err);
+//   }
+// };
+
+// foo();
+
+// 위 예제에서 foo 함수의 catch 문은 HTTP 통신에서 발생한 네트워크 에러뿐 아니라 try 코드 블록 내의 모든 문에서 발생한 일반적인 에러가지 모두 캐치할 수 있다.
+// * 만약에 async 함수내에서 catch 문을 사용해서 에러 처리를 하지 않으면 async 함수는 발생한 에러를 reject하는 프로미스를 반환한다. 따라서 async 함수를 호출하고 Promise.prototype.catch 후속 처리 메서드를 사용해 에러를 캐치할 수도 있다
+
+// const fetch = require('node-fetch');
+
+// const foo = async () => {
+//   const wrongUrl = 'https://wrong.url';
+//   const response = await fetch(wrongUrl);
+//   const data = await response.json();
+//   return data;
+// };
+
+// foo().then(console.log).catch(console.error);
