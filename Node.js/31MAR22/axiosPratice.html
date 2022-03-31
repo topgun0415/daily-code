@@ -1,0 +1,57 @@
+<!-- @format -->
+
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Axios Pratice</title>
+  </head>
+  <body>
+    <div>
+      <div class="result"></div>
+      <div class="name"></div>
+      <div class="birth"></div>
+    </div>
+
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script>
+      const $result = document.querySelector('.result');
+      const $name = document.querySelector('.name');
+      const $birth = document.querySelector('.birth');
+
+      axios
+        .get('https://www.zerocho.com/api/get')
+        .then((result) => {
+          console.log(result);
+          console.log(result.data);
+          console.log(result.status);
+          if (result.status === 200) {
+            $result.textContent = 'scueess';
+          } else {
+            $result.textContent = 'failed';
+          }
+        })
+        .catch((error) => {
+          console.error(error);
+        });
+
+      (async () => {
+        try {
+          const result = await axios.post(
+            'https://www.zerocho.com/api/post/json',
+            {
+              name: 'Philip',
+              birth: '1992',
+            }
+          );
+          console.log(result);
+          console.log(result.data);
+        } catch (error) {
+          console.error(error);
+        }
+      })();
+    </script>
+  </body>
+</html>
