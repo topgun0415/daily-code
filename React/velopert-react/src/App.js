@@ -11,4 +11,4 @@ String(true); // boolean -> String
 
 (1).toString();
 NaN.toString();
-const type = true.toStrng();
+const type = true.toString();
