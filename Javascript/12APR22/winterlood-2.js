@@ -263,25 +263,20 @@ egg1('🥚')
 
 // ✅ Async & Await
 
-function pizza(something) {
+function delay(ms) {
   return new Promise((resolve) => {
-    setTimeout(() => {
-      const res = something + '=>';
-    }, 2000);
+    setTimeout(resolve, ms);
   });
 }
 
-function coffee(something) {
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      const res = something;
-    }, 2000);
-  });
+async function sayHello() {
+  await delay('3000');
+  return 'Hello world';
 }
 
-async function food() {
-  const pizza = await pizza('🍕');
-  const cola = await coffee('☕');
-
-  console.log(pizza, cola);
+async function main() {
+  const res = await sayHello();
+  console.log(res);
 }
+
+main();
