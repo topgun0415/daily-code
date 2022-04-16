@@ -1,37 +1,31 @@
 /** @format */
+import React from 'react';
 // import './App.css';
-import MyFooter from './MyFooter.jsx';
 import MyHeader from './MyHeader.jsx';
+import Counter from './Counter.jsx';
+import Container from './Container.jsx';
 
 function App() {
-  let name = '이성계';
-  const number = 5;
-
-  const style = {
-    App: {
-      backgroundColor: 'black',
-    },
-    h2: {
-      color: 'red',
-    },
-    bold_text: {
-      color: 'green',
-    },
+  const counterProps = {
+    counterValue1: 3,
+    counterValue2: 4,
+    counterValue4: 8,
   };
 
   return (
-    <div style={style.App} className='App'>
-      <MyHeader />
-      <h2 style={style.h2}>안녕 리액트 {name} </h2>
-      <h3 style={style.h2}>
-        {number}는 {number ? '짝수' : '홀수'}이다.
-      </h3>
-      <b style={style.bold_text} className='bold_text'>
-        React.js
-      </b>
-      <MyFooter />
-    </div>
+    <Container>
+      <div className='App'>
+        <MyHeader />
+        <Counter Value={2} {...counterProps} />
+        {/* 이렇게 속성값으로 props라는 값을 전달할 수도 있음 */}
+      </div>
+    </Container>
   );
 }
 
 export default App;
+
+// 1. 속성전달로 준 props와 객체선언해서 준 props를 동시에 못 주나?
+// 2. 파일명은 무조건 대문자 시작?
+// 3. return에서 어떤건 괄호가 생기고 어떤건 그냥 <> </>로만 있는데 return하는 것이 2개 문장 이상이면 되는것 맞나??
+// 4. children이라는 Props의 이름은 고정된 것?
