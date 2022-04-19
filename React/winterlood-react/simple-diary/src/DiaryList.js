@@ -1,7 +1,7 @@
 /** @format */
-import DiaryItem from './DiaryItem.js';
+import DiaryItem from './DiaryItem';
 
-const DiaryList = ({ diaryList }) => {
+const DiaryList = ({ diaryList, onRemove, onEdit }) => {
   console.log(diaryList);
   return (
     <div className='DiaryList'>
@@ -9,7 +9,12 @@ const DiaryList = ({ diaryList }) => {
       <h4>日記が{diaryList.length}個あります</h4>
       <div>
         {diaryList.map((v) => (
-          <DiaryItem key={v.id} {...v} />
+          <DiaryItem
+            onEdit={onEdit}
+            onRemove={onRemove}
+            key={`diaryitem_${v.id}`}
+            {...v}
+          />
         ))}
       </div>
     </div>

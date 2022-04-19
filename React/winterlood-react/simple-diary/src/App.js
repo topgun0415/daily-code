@@ -1,9 +1,10 @@
 /** @format */
 
 import './App.css';
-import React, { useState } from 'React';
-import DiaryEditor from './DiaryEditor.js';
-import DiaryList from './DiaryList.js';
+import { useState, useRef, useEffect } from 'react';
+import DiaryEditor from './DiaryEditor';
+import DiaryList from './DiaryList';
+import Lifecycle from './Lifecycle';
 
 // const dummyList = [
 //   {
@@ -43,17 +44,68 @@ import DiaryList from './DiaryList.js';
 //   },
 // ];
 
-function App() {
+// https://jsonplaceholder.typicode.com/comments
+
+const App = () => {
   const [data, setData] = useState([]);
 
-  const onCreate = (author, content, emotion) => {};
+  const dataId = useRef(0);
+
+  // // usage of fetch API
+  // const getData = async () => {
+  //   const res = await fetch(
+  //     'https://jsonplaceholder.typicode.com/comments'
+  //   ).then((res) => res.json());
+  //   console.log(res);
+
+  //   const initData = res.slice(0, 20).map((v) => {
+  //     return {
+  //       author: v.email,
+  //       content: v.body,
+  //       emotion: parseInt(Math.floor(Math.random() * 6)),
+  //       created_date: new Date().getTime().toLocaleString(),
+  //       id: dataId.current++,
+  //     };
+  //   });
+  //   setData(initData);
+  // };
+
+  // useEffect(() => {
+  //   getData();
+  // }, []);
+
+  const onCreate = (author, content, emotion) => {
+    const created_date = new Date().getTime();
+    const newItem = {
+      author,
+      content,
+      emotion,
+      created_date,
+      id: dataId.current,
+    };
+    dataId.current += 1;
+    setData([newItem, ...data]);
+  };
+
+  const onRemove = (targetID) => {
+    console.log(`${targetID}가 삭제되었습니다.`);
+    const newDiaryList = data.filter((v) => v.id !== targetID);
+    setData(newDiaryList);
+  };
+
+  const onEdit = (targetID, newContent) => {
+    setData(
+      data.map((v) => (v.id === targetID ? { ...v, content: newContent } : v))
+    );
+  };
 
   return (
     <div className='App'>
-      <DiaryEditor />
-      <DiaryList diaryList={data} />
+      {/* <Lifecycle /> */}
+      <DiaryEditor onCreate={onCreate} />
+      <DiaryList onEdit={onEdit} onRemove={onRemove} diaryList={data} />
     </div>
   );
-}
+};
 
 export default App;

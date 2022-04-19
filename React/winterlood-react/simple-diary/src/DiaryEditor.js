@@ -4,15 +4,15 @@ import React, { useRef, useState } from 'react';
 // useState = React에서는 변수 선언없이 이렇게 useState를 선언해서 제어함
 // useRef = 자바스크립트의 QuerySelector와 같은 역할
 
-const DiaryEditor = () => {
+const DiaryEditor = ({ onCreate }) => {
+  const authorInput = useRef();
+  const contentInput = useRef();
+
   const [state, setState] = useState({
     author: '',
     content: '',
     emotion: 1,
   });
-
-  const authorInput = useRef();
-  const contentInput = useRef();
 
   const onChangeHandler = (e) => {
     setState({
@@ -31,8 +31,13 @@ const DiaryEditor = () => {
       contentInput.current.focus();
       return;
     }
-
+    onCreate(state.author, state.content, state.emotion);
     alert('保存完了');
+    setState({
+      author: '',
+      content: '',
+      emotion: 1,
+    });
   };
 
   return (
@@ -44,12 +49,16 @@ const DiaryEditor = () => {
           name='author'
           value={state.author}
           onChange={onChangeHandler}
+          placeholder='作者'
+          type='text'
         />
       </div>
       <div>
         <textarea
           ref={contentInput}
           name='content'
+          placeholder='日記'
+          type='text'
           value={state.content}
           onChange={onChangeHandler}></textarea>
       </div>
