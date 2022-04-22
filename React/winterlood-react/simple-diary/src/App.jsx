@@ -1,7 +1,13 @@
 /** @format */
 
 import './App.css';
-import { useRef, useEffect, useMemo, useCallback, useReducer } from 'react';
+import React, {
+  useRef,
+  useEffect,
+  useMemo,
+  useCallback,
+  useReducer,
+} from 'react';
 import DiaryEditor from './DiaryEditor';
 import DiaryList from './DiaryList';
 import OptimizeTest from './OptimizeTest';
@@ -73,6 +79,9 @@ const reducer = (state, action) => {
   }
 };
 
+export const DiaryStateContext = React.createContext();
+export const DiaryDispatchContext = React.createContext();
+
 const App = () => {
   const [data, dispatch] = useReducer(reducer, []);
 
@@ -117,6 +126,11 @@ const App = () => {
     dispatch({ type: 'EDIT', targetID, newContent });
   }, []);
 
+  const memoizedDispatches = useMemo(() => {
+    return { onCreate, onRemove, onEdit };
+  }, []);
+  // 일반 객체가 아닌 useMemo()를 사용한 이유는 useMemo는 일반 객체로 묶은 것과는 달리 재생성이 되지 않는다. 즉 리랜더링을 안하게 된다.
+
   const getDiaryAnalysis = useMemo(() => {
     const goodCount = data.filter((v) => v.emotion >= 3).length;
     const badCount = data.length - goodCount;
@@ -127,16 +141,20 @@ const App = () => {
   const { goodCount, goodRatio, badCount } = getDiaryAnalysis;
 
   return (
-    <div className='App'>
-      {/* <Lifecycle /> */}
-      <OptimizeTest />
-      <DiaryEditor onCreate={onCreate} />
-      <div>전체 일기 : {data.length}</div>
-      <div>기분 좋은 일기 : {goodCount}</div>
-      <div>기분 나쁜 일기 : {badCount}</div>
-      <div>기분 좋은 비율 : {goodRatio}%</div>
-      <DiaryList onEdit={onEdit} onRemove={onRemove} diaryList={data} />
-    </div>
+    <DiaryStateContext.Provider value={data}>
+      <DiaryDispatchContext.Provider value={memoizedDispatches}>
+        <div className='App'>
+          {/* <Lifecycle /> */}
+          <OptimizeTest />
+          <DiaryEditor />
+          <div>전체 일기 : {data.length}</div>
+          <div>기분 좋은 일기 : {goodCount}</div>
+          <div>기분 나쁜 일기 : {badCount}</div>
+          <div>기분 좋은 비율 : {goodRatio}%</div>
+          <DiaryList />
+        </div>
+      </DiaryDispatchContext.Provider>
+    </DiaryStateContext.Provider>
   );
 };
 

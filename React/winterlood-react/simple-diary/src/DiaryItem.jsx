@@ -1,21 +1,16 @@
 /** @format */
 
-import React, { useState, useRef } from 'react';
+import React, { useContext, useState, useRef } from 'react';
+import { DiaryDispatchContext } from './App';
 
-const DiaryItem = ({
-  author,
-  content,
-  created_date,
-  emotion,
-  id,
-  onRemove,
-  onEdit,
-}) => {
+const DiaryItem = ({ author, content, created_date, emotion, id }) => {
   const handleRemove = () => {
     if (window.confirm('日記を本当に消しますか')) {
       onRemove(id);
     }
   };
+
+  const { onRemove, onEdit } = useContext(DiaryDispatchContext);
 
   const [isEdit, setIsEdit] = useState(false);
   const toggleIsEdit = () => setIsEdit(!isEdit);

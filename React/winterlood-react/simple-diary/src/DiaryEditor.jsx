@@ -1,10 +1,13 @@
 /** @format */
 
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useContext, useEffect, useRef, useState } from 'react';
+import { DiaryDispatchContext } from './App';
 // useState = React에서는 변수 선언없이 이렇게 useState를 선언해서 제어함
 // useRef = 자바스크립트의 QuerySelector와 같은 역할
 
-const DiaryEditor = ({ onCreate }) => {
+const DiaryEditor = () => {
+  const { onCreate } = useContext(DiaryDispatchContext);
+
   const authorInput = useRef();
   const contentInput = useRef();
 
