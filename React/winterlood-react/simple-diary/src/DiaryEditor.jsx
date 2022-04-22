@@ -1,6 +1,6 @@
 /** @format */
 
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 // useState = React에서는 변수 선언없이 이렇게 useState를 선언해서 제어함
 // useRef = 자바스크립트의 QuerySelector와 같은 역할
 
@@ -78,4 +78,4 @@ const DiaryEditor = ({ onCreate }) => {
   );
 };
 
-export default DiaryEditor;
+export default React.memo(DiaryEditor);

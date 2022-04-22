@@ -1,7 +1,7 @@
 /** @format */
 
 import './App.css';
-import { useState, useRef, useEffect, useMemo } from 'react';
+import { useRef, useEffect, useMemo, useCallback, useReducer } from 'react';
 import DiaryEditor from './DiaryEditor';
 import DiaryList from './DiaryList';
 import OptimizeTest from './OptimizeTest';
@@ -47,57 +47,75 @@ import OptimizeTest from './OptimizeTest';
 
 // https://jsonplaceholder.typicode.com/comments
 
+const reducer = (state, action) => {
+  switch (action.type) {
+    case 'INIT': {
+      return action.data;
+    }
+    case 'CREATE': {
+      const created_date = new Date().getTime();
+      const newItem = {
+        ...action.data,
+        created_date,
+      };
+      return [newItem, ...state];
+    }
+    case 'REMOVE': {
+      return state.filter((v) => v.id !== action.targetID);
+    }
+    case 'EDIT': {
+      return state.map((v) =>
+        v.id === action.targetID ? { ...v, content: action.newContent } : v
+      );
+    }
+    default:
+      return state;
+  }
+};
+
 const App = () => {
-  const [data, setData] = useState([]);
+  const [data, dispatch] = useReducer(reducer, []);
 
   const dataId = useRef(0);
 
-  // // usage of fetch API
-  // const getData = async () => {
-  //   const res = await fetch(
-  //     'https://jsonplaceholder.typicode.com/comments'
-  //   ).then((res) => res.json());
-  //   console.log(res);
+  // usage of fetch API
+  const getData = async () => {
+    const res = await fetch(
+      'https://jsonplaceholder.typicode.com/comments'
+    ).then((res) => res.json());
 
-  //   const initData = res.slice(0, 20).map((v) => {
-  //     return {
-  //       author: v.email,
-  //       content: v.body,
-  //       emotion: parseInt(Math.floor(Math.random() * 6)),
-  //       created_date: new Date().getTime().toLocaleString(),
-  //       id: dataId.current++,
-  //     };
-  //   });
-  //   setData(initData);
-  // };
+    const initData = res.slice(0, 20).map((v) => {
+      return {
+        author: v.email,
+        content: v.body,
+        emotion: parseInt(Math.floor(Math.random() * 6)),
+        created_date: new Date().getTime().toLocaleString(),
+        id: dataId.current++,
+      };
+    });
+    dispatch({ type: 'INIT', data: initData });
+  };
 
-  // useEffect(() => {
-  //   getData();
-  // }, []);
+  useEffect(() => {
+    getData();
+  }, []);
 
-  const onCreate = (author, content, emotion) => {
-    const created_date = new Date().getTime();
-    const newItem = {
-      author,
-      content,
-      emotion,
-      created_date,
-      id: dataId.current,
-    };
+  const onCreate = useCallback((author, content, emotion) => {
+    dispatch({
+      type: 'CREATE',
+      data: { author, content, emotion, id: dataId.current },
+    });
+
     dataId.current += 1;
-    setData([newItem, ...data]);
-  };
+  }, []);
 
-  const onRemove = (targetID) => {
-    const newDiaryList = data.filter((v) => v.id !== targetID);
-    setData(newDiaryList);
-  };
+  const onRemove = useCallback((targetID) => {
+    dispatch({ type: 'REMOVE', targetID });
+  }, []);
 
-  const onEdit = (targetID, newContent) => {
-    setData(
-      data.map((v) => (v.id === targetID ? { ...v, content: newContent } : v))
-    );
-  };
+  const onEdit = useCallback((targetID, newContent) => {
+    dispatch({ type: 'EDIT', targetID, newContent });
+  }, []);
 
   const getDiaryAnalysis = useMemo(() => {
     const goodCount = data.filter((v) => v.emotion >= 3).length;
