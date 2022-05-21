@@ -26,6 +26,13 @@ function App() {
     console.log(bootCamps[0]);
   }, [bootCamps]);
 
+  // useEffect(() => {
+  //   axios.get('https://jsonplaceholder.typicode.com/posts/').then((res) => {
+  //     setBootCamps(res.data);
+  //     console.log(res.data);
+  //   });
+  // }, []);
+
   return (
     <Container>
       <div className='App'>
@@ -34,7 +41,7 @@ function App() {
         {/* 이렇게 속성값으로 props라는 값을 전달할 수도 있음 */}
       </div>
       <section>
-        <select name='하이룽' id=''>
+        <select name='하이룽'>
           {bootCamps.map((v) => {
             return <option>{v.name}</option>;
           })}
