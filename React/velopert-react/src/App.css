@@ -7,6 +7,13 @@ body {
 .App {
   text-align: center;
   font-size: 1.5rem;
-  color: #61dbfb;
   font-weight: bold;
+}
+
+.Admins {
+  background-color: aqua;
+  color: black;
+  font-size: 48px;
+  font-weight: bold;
+  padding: 10px;
 }
