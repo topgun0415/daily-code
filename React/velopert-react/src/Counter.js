@@ -6,6 +6,7 @@ class Counter extends Component {
   state = {
     number: 0,
     fixedNumber: 0,
+    age: 0,
   };
 
   render() {
@@ -21,6 +22,7 @@ class Counter extends Component {
                 number: number + 1,
               },
               () => {
+                console.log('방금 setState가 호출되었습니다.');
                 console.log(this.state);
               }
             );
