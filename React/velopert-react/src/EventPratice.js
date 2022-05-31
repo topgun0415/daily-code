@@ -1,55 +1,59 @@
 /** @format */
 
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 
-class EventPratice extends Component {
-  state = {
-    message: '',
+const EventPratice = () => {
+  const [form, setForm] = useState({
     username: '',
-  };
+    message: '',
+  });
 
-  handleChange = (e) => {
-    this.setState({
+  const { username, message } = form;
+
+  const inputHanlder = (e) => {
+    const nextForm = {
+      ...form,
       [e.target.name]: e.target.value,
-    });
+    };
+
+    setForm(nextForm);
   };
 
-  handleClick = () => {
-    alert(this.state.username + ': ' + this.state.message);
-    this.setState({
+  const clickHandler = () => {
+    alert(username + ' :' + message);
+    setForm({
       username: '',
       message: '',
     });
   };
 
-  handleKeyPress = (e) => {
+  const enterHandler = (e) => {
     if (e.key === 'Enter') {
-      this.handleClick();
+      clickHandler();
     }
   };
 
-  render() {
-    return (
-      <div>
-        <h1 style={{ color: 'Red' }}>Event Pratice</h1>
-        <input
-          type='text'
-          name='username'
-          placeholder='User Name'
-          value={this.state.username}
-          onChange={this.handleChange}
-        />
-        <input
-          type='text'
-          name='message'
-          placeholder='Message'
-          value={this.state.message}
-          onChange={this.handleChange}
-        />
-        <button onClick={this.handleClick}>Click</button>
-      </div>
-    );
-  }
-}
+  return (
+    <div>
+      <h1>Event Pratice</h1>
+      <input
+        type='text'
+        name='username'
+        value={username}
+        placeholder='write user name'
+        onChange={inputHanlder}
+      />
+      <input
+        type='text'
+        name='message'
+        value={message}
+        placeholder='write message'
+        onChange={inputHanlder}
+        onKeyPress={enterHandler}
+      />
+      <button onClick={clickHandler}>Button</button>
+    </div>
+  );
+};
 
 export default EventPratice;
