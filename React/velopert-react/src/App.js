@@ -5,6 +5,7 @@ import MyComponent from './MyComponent';
 import Counter from './Counter';
 import Say from './Say';
 import EventPratice from './EventPratice';
+import ValidationSample from './ValidationSample';
 
 class App extends Component {
   render() {
@@ -15,6 +16,7 @@ class App extends Component {
         <Counter />
         <Say />
         <EventPratice />
+        <ValidationSample />
       </div>
     );
   }
