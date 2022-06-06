@@ -6,6 +6,7 @@ import Counter from './Counter';
 import Say from './Say';
 import EventPratice from './EventPratice';
 import ValidationSample from './ValidationSample';
+import IterationSample from './IterationSample';
 
 class App extends Component {
   render() {
@@ -17,6 +18,7 @@ class App extends Component {
         <Say />
         <EventPratice />
         <ValidationSample />
+        <IterationSample />
       </div>
     );
   }
