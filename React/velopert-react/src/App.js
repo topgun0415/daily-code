@@ -7,6 +7,7 @@ import Say from './Say';
 import EventPratice from './EventPratice';
 import ValidationSample from './ValidationSample';
 import IterationSample from './IterationSample';
+import HookPratice from './HookPratice';
 
 class App extends Component {
   render() {
@@ -19,6 +20,7 @@ class App extends Component {
         <EventPratice />
         <ValidationSample />
         <IterationSample />
+        <HookPratice />
       </div>
     );
   }
