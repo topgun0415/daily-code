@@ -15,6 +15,5 @@ public class Fibonacci2 {
       num2 = num1;
 
     }
-
   }
 }
