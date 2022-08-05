@@ -1,11 +1,17 @@
 /** @format */
 
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const HookPratice = () => {
   const [value, setValue] = useState(0);
   const [name, setName] = useState('');
   const [nickname, setNickname] = useState('');
+
+  // 머윤트될 때만 실행하고 싶을 때
+  useEffect(() => {
+    console.log('Execute when only name state change');
+    console.log(name);
+  }, [name]);
 
   const onChangeName = (e) => {
     setName(e.target.value);
