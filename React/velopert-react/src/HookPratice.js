@@ -9,9 +9,14 @@ const HookPratice = () => {
 
   // 머윤트될 때만 실행하고 싶을 때
   useEffect(() => {
-    console.log('Execute when only name state change');
+    console.log('effect');
     console.log(name);
-  }, [name]);
+
+    return () => {
+      console.log('unmount');
+      console.log(name);
+    };
+  }, []);
 
   const onChangeName = (e) => {
     setName(e.target.value);
