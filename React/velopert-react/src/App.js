@@ -1,6 +1,8 @@
 /** @format */
 import React, { useState } from 'react';
 import HookPratice from './HookPratice';
+import Counter from './Counter';
+import Average from './Average';
 
 const App = () => {
   const [visible, setVisible] = useState(false);
@@ -15,6 +17,8 @@ const App = () => {
       </button>
       <hr />
       {visible && <HookPratice />}
+      <Counter />
+      <Average />
     </div>
   );
 };
