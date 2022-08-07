@@ -1,19 +1,15 @@
 /** @format */
 
-body {
-  margin: 0;
-}
-
 .App {
   text-align: center;
-  font-size: 1.5rem;
-  font-weight: bold;
 }
 
-.Admins {
-  background-color: aqua;
-  color: black;
-  font-size: 48px;
-  font-weight: bold;
-  padding: 10px;
+.App header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
 }

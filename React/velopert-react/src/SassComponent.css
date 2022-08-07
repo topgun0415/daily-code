@@ -1,0 +1,60 @@
+/** @format */
+.SassCompoent {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+}
+
+.SassCompoent .box {
+  background: red;
+  cursor: pointer;
+  -webkit-transition: all 0.3s ease-in;
+  transition: all 0.3s ease-in;
+}
+
+.SassCompoent .box.red {
+  background: #fa5252;
+  width: 32px;
+  height: 32px;
+}
+
+.SassCompoent .box.orange {
+  background: #fd7e14;
+  width: 64px;
+  height: 64px;
+}
+
+.SassCompoent .box.yellow {
+  background: #fcc419;
+  width: 96px;
+  height: 96px;
+}
+
+.SassCompoent .box.green {
+  background: #40c057;
+  width: 128px;
+  height: 128px;
+}
+
+.SassCompoent .box.blue {
+  background: #339af0;
+  width: 160px;
+  height: 160px;
+}
+
+.SassCompoent .box.indigo {
+  background: #5c7cfa;
+  width: 192px;
+  height: 192px;
+}
+
+.SassCompoent .box.violet {
+  background: #7950f2;
+  width: 224px;
+  height: 224px;
+}
+
+.SassCompoent .box:hover {
+  background-color: black;
+}
+/*# sourceMappingURL=SassComponent.css.map */
