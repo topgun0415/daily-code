@@ -1,0 +1,55 @@
+.TodoInsert {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  background: #262b2f;
+  height: 50px;
+}
+
+.TodoInsert input {
+  background: none;
+  color: white;
+  font-size: 1.3rem;
+  outline: none;
+  border: none;
+  padding: 0.5rem;
+  line-height: 1.5;
+  -webkit-box-flex: 1;
+      -ms-flex: 1;
+          flex: 1;
+}
+
+.TodoInsert input::-webkit-input-placeholder {
+  color: #dee2e6;
+}
+
+.TodoInsert input:-ms-input-placeholder {
+  color: #dee2e6;
+}
+
+.TodoInsert input::-ms-input-placeholder {
+  color: #dee2e6;
+}
+
+.TodoInsert input::placeholder {
+  color: #dee2e6;
+}
+
+.TodoInsert button {
+  background: none;
+  outline: none;
+  border: none;
+  background: #868e96;
+  color: white;
+  padding-right: 1rem;
+  padding-left: 1rem;
+  font-size: 1.3rem;
+  cursor: pointer;
+  -webkit-transition: 0.3s background ease-in;
+  transition: 0.3s background ease-in;
+}
+
+.TodoInsert button:hover {
+  background: #adb5bd;
+}
+/*# sourceMappingURL=TodoInsert.css.map */
