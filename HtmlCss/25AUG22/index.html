@@ -1,0 +1,59 @@
+<!-- @format -->
+
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>研修生情報入力画面</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <div class="header-container">
+        <div class="linebar-up"></div>
+        <div class="title">研修生情報入力画面</div>
+        <div class="linebar-down"></div>
+      </div>
+    </header>
+    <section>
+      <form action="" class="section-container">
+        <div class="course-wrapper">
+          <p>コース</p>
+          <select name="course">
+            <option value="">Javaプログラミング基礎</option>
+          </select>
+        </div>
+        <div class="name-wrapper">
+          <p>名前</p>
+          <input type="text" name="name" />
+        </div>
+        <div class="address-wrapper">
+          <p>住所</p>
+          <input type="text" name="address" />
+        </div>
+        <div class="tel-wrapper">
+          <p>電話番号</p>
+          <input type="tel" name="tel" />
+        </div>
+        <div class="birth-wrapper">
+          <p>生年月日</p>
+          <select name="year">
+            <option value="">2007</option>
+          </select>
+          <p>年</p>
+          <select name="month">
+            <option value="">06</option>
+          </select>
+          <p>月</p>
+          <select name="day">
+            <option value="">22</option>
+          </select>
+          <p>日</p>
+        </div>
+        <button type="submit" id="btn">登録</button>
+      </form>
+    </section>
+    <footer></footer>
+  </body>
+</html>

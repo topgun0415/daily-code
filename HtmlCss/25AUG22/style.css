@@ -1,0 +1,145 @@
+/** @format */
+
+body {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  background-color: #ccffff;
+  font-family: sans-serif;
+}
+
+.header-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-top: 30px;
+}
+
+.linebar-up {
+  width: 98vw;
+  height: 2.5px;
+  border-radius: 3px;
+  border-top: 3px solid rgb(159, 180, 180);
+  border-right: 2px solid rgb(208, 231, 227);
+  border-left: 2px solid rgb(159, 180, 180);
+  border-bottom: 2px solid rgb(208, 231, 227);
+}
+
+.linebar-down {
+  width: 98vw;
+  height: 2.5px;
+  border-radius: 3px;
+  border-top: 2px solid rgb(159, 180, 180);
+  border-right: 2px solid rgb(208, 231, 227);
+  border-left: 2px solid rgb(159, 180, 180);
+  border-bottom: 2px solid rgb(208, 231, 227);
+}
+
+.title {
+  font-size: 37px;
+  letter-spacing: 3px;
+  font-weight: bold;
+  color: blue;
+}
+
+section {
+  width: 100vw;
+  height: 550px;
+  border: 3px solid red;
+}
+
+.section-container {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.section-container p {
+  font-size: 27px;
+  font-weight: 500;
+  letter-spacing: 4px;
+}
+
+.course-wrapper {
+  display: flex;
+  width: 350px;
+  height: 50px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.course-wrapper > select {
+  width: 235px;
+  height: 28px;
+}
+
+.name-wrapper {
+  display: flex;
+  width: 350px;
+  height: 50px;
+  justify-content: flex-start;
+  gap: 60px;
+  align-items: center;
+}
+
+.name-wrapper > input {
+  width: 180px;
+  height: 28px;
+}
+
+.address-wrapper {
+  display: flex;
+  width: 525px;
+  height: 50px;
+  margin-left: 175px;
+  gap: 60px;
+  align-items: center;
+}
+
+.address-wrapper > input {
+  width: 400px;
+  height: 28px;
+}
+
+.tel-wrapper {
+  display: flex;
+  width: 350px;
+  height: 50px;
+  gap: 2px;
+  align-items: center;
+}
+
+.tel-wrapper > input {
+  width: 180px;
+  height: 28px;
+}
+
+.birth-wrapper {
+  display: flex;
+  width: 410px;
+  height: 50px;
+  margin-left: 62px;
+  gap: 4px;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.birth-wrapper > select {
+  width: 55px;
+  height: 28px;
+  border-top: 2px solid rgb(101, 100, 100);
+  border-left: 2px solid rgb(101, 100, 100);
+}
+
+#btn {
+  width: 50px;
+  height: 30px;
+}
+
+/* border-top: 2px solid rgb(101, 100, 100);
+  border-left: 2px solid rgb(101, 100, 100); */
