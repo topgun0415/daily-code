@@ -60,17 +60,17 @@ function emptyValidator() {
   // 複数が入力されてない場合は一番手前の入力されてないものからアラート表示
   if ($inputName.value.trim() === '' || !isNaN($inputName.value)) {
     // アラートを表示
-    alert('【名前を入力して下さい】');
+    alert('Please enter your name');
     // フォーカスをセット
     $inputName.focus();
   } else if ($inputAddress.value === '' || $inputAddress.value.includes('　')) {
-    alert('【住所を入力して下さい】');
+    alert('Please enter your address');
     $inputAddress.focus();
   } else if ($inputPhone.value === '' || $inputPhone.value.includes('　')) {
-    alert('【電話番号を入力して下さい】');
+    alert('Please enter  your phone number');
     $inputPhone.focus();
   } else if (isNaN($inputPhone.value)) {
-    alert('【電話番号を半角数値で入力して下さい】');
+    alert('Please enter number');
     $inputPhone.focus();
   } else {
     flag = true;
