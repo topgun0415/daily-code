@@ -6,46 +6,46 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>研修生情報入力画面</title>
+    <title>Intern Application</title>
     <link rel="stylesheet" href="input.css" />
   </head>
   <body>
     <header>
       <div class="header-container">
         <div class="linebar"></div>
-        <div class="title">研修生情報入力画面</div>
+        <div class="title">Intern Application</div>
         <div class="linebar"></div>
       </div>
     </header>
     <section>
       <form action="JdbcSrv" method="post" class="section-container">
         <div class="course-wrapper">
-          <p>コース</p>
+          <p>Course</p>
           <select name="course">
-            <option value="1">Javaプログラミング基礎</option>
-            <option value="2">Javaプログラミング実践</option>
-            <option value="3">Webプログラミング(Java)基礎</option>
-            <option value="4">Webプログラミング(Java)実践</option>
-            <option value="5">C基礎</option>
-            <option value="6">C実践</option>
-            <option value="7">C-DB基礎</option>
-            <option value="8">C-DB実践</option>
-            <option value="9">C#プログラミング基礎</option>
-            <option value="10">C#プログラミング実践</option>
-            <option value="11">Webプログラミング(C#)基礎</option>
-            <option value="12">Webプログラミング(C#)実践</option>
-            <option value="13">Network基礎</option>
-            <option value="14">Network実践</option>
-            <option value="15">Server基礎</option>
-            <option value="16">Server実践</option>
+            <option value="1">JavaStandard</option>
+            <option value="2">JavaChallenge</option>
+            <option value="3">Web(Java) Standard</option>
+            <option value="4">Web(Java) Challenge</option>
+            <option value="5">C Standard</option>
+            <option value="6">C Callenge</option>
+            <option value="7">C-DB Basic</option>
+            <option value="8">C-DB Standard</option>
+            <option value="9">C# Basic</option>
+            <option value="10">C# Challenge</option>
+            <option value="11">Web Program Basic</option>
+            <option value="12">Web Program Standard</option>
+            <option value="13">Network Basic</option>
+            <option value="14">Network Standard</option>
+            <option value="15">Server Basic</option>
+            <option value="16">Server Standard</option>
           </select>
         </div>
         <div class="name-wrapper">
-          <p>名前</p>
+          <p>Name</p>
           <input type="text" name="name" maxlength="10" class="input-name" />
         </div>
         <div class="address-wrapper">
-          <p>住所</p>
+          <p>Address</p>
           <input
             type="text"
             name="address"
@@ -54,20 +54,20 @@
           />
         </div>
         <div class="phone-wrapper">
-          <p>電話番号</p>
+          <p>Telephone</p>
           <input type="text" name="phone" maxlength="11" class="input-phone" />
         </div>
         <div class="birth-wrapper">
-          <p>生年月日</p>
+          <p>Birth</p>
           <select name="year" class="year"></select>
-          <p>年</p>
+          <p>Year</p>
           <select name="month" class="month"></select>
-          <p>月</p>
+          <p>Month</p>
           <select name="day" class="day"></select>
-          <p>日</p>
+          <p>Day</p>
         </div>
         <button type="submit" id="btn" onclick="return emptyValidator();">
-          登録
+          Apply
         </button>
       </form>
     </section>
@@ -76,11 +76,11 @@
         <div class="linebar"></div>
         <div class="copyright-wrapper">
           <p>
-            web TigerInfomationSystem Version1.0 Copyright(c) 2007 MEDIA FIVE CO
+            Philipuuu 
           </p>
         </div>
       </div>
     </footer>
-    <script src="./calednar-m5.js"></script>
+    <script src="./calednar.js"></script>
   </body>
 </html>
