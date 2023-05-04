@@ -33,14 +33,14 @@ const TodoHead = () => {
   const now = new Date();
 
   const [date, setDate] = useState(
-    `${now.getFullYear()}년 ${now.getMonth()}월 ${now.getDate()}일`
+    `${now.getFullYear()}年 ${now.getMonth()}月 ${now.getDate()}日`
   );
 
   return (
     <TodoHeadBlock>
       <h1>{date}</h1>
-      <div className='day'>일요일</div>
-      <div className='tasks-left'>할일 2개 남았음</div>
+      <div className='day'>日曜日</div>
+      <div className='tasks-left'>すること二つ</div>
     </TodoHeadBlock>
   );
 };
