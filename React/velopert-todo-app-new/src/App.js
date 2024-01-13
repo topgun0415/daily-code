@@ -1,28 +1,26 @@
 /** @format */
 
 import './App.css';
-import { createGlobalStyle } from 'styled-components';
-import TodoTemplate from './components/TodoTemplate';
-import TodoHead from './components/TodoHead.jsx';
-import TodoList from './components/TodoList.jsx';
-import TodoCreate from './components/TodoCreate';
-
-const GlobalStyle = createGlobalStyle`
- body {
-  background: #e9ecef;
- }
- `;
+import Hello from './components/Hello.jsx';
+import Wrapper from './components/Wrapper.jsx';
+import Counter from './components/Counter.jsx';
 
 function App() {
+  const name = 'Philipuuu';
+  const style = {
+    backgroundColor: 'black',
+    color: 'aqua',
+    fontSize: '24',
+    padding: '1rem',
+  };
+
   return (
-    <div>
-      <GlobalStyle />
-      <TodoTemplate>
-        <TodoHead />
-        <TodoList />
-        <TodoCreate />
-      </TodoTemplate>
-    </div>
+    <Wrapper>
+      {/* 이렇게 isSpecial 이름만 넣어주면 isSpecial={true} 와 동일한 의미입니다. */}
+      <Hello color='red' isSpecial />
+      <Hello color='pink' isSpecial={false} />
+      <Counter />
+    </Wrapper>
   );
 }
 
